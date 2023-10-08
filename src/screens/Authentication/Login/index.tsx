@@ -4,19 +4,34 @@ import { LoginFormFields } from "../../../interfaces/auth";
 import { DevTool } from "@hookform/devtools";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../../../services/auth";
+import { getErrorMessage } from "../../../utils/helpers";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
+  const { mutate, isError, isLoading, data, error } = useMutation({
+    mutationFn: login,
+    // onSuccess: data => {
+    //   queryClient.setQueryData(["posts", data.id], data)
+    //   queryClient.invalidateQueries(["posts"], { exact: true })
+    //   setCurrentPage(<Post id={data.id} />)
+    // },
+  });
+
   const { handleSubmit, control } = useForm<LoginFormFields>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
+  // console.log({ isError, isLoading, data });
 
   const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
-    console.log(data);
+    mutate(data);
   };
+
+  const errorMessage = getErrorMessage(error);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
