@@ -10,7 +10,7 @@ import { getErrorMessage } from "../../../utils/helpers";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
-  const { mutate, isError, isLoading, data, error } = useMutation({
+  const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: login,
     // onSuccess: data => {
     //   queryClient.setQueryData(["posts", data.id], data)
@@ -37,8 +37,9 @@ const Login: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <CustomTextField control={control} name={"email"} type="email" />
       <CustomTextField control={control} name={"password"} type="password" />
+      {isError && errorMessage}
       <Button type="submit" variant="contained">
-        Login
+        {isLoading ? "Loading " : "Login"}
       </Button>
       <Button
         variant="text"

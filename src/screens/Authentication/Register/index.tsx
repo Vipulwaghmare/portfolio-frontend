@@ -10,7 +10,7 @@ import { useMutation } from "@tanstack/react-query";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
-  const { mutate, isError, isLoading, data, error } = useMutation({
+  const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: register,
   });
   const { handleSubmit, control } = useForm<RegisterFormFields>({
@@ -29,8 +29,9 @@ const Register: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <CustomTextField control={control} name={"email"} type="email" />
       <CustomTextField control={control} name={"password"} type="password" />
+      {isError && errorMessage}
       <Button type="submit" variant="contained">
-        Register
+        {isLoading ? "Loading " : "Register"}
       </Button>
       <Button
         variant="text"
