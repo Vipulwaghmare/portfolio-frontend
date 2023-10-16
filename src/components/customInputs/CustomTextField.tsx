@@ -6,12 +6,33 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   name,
   control,
   type = "text",
+  testId,
+  placeHolder,
+  required = false,
+  fullWidth = true,
 }) => {
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field }) => <TextField {...field} type={type} />}
+      rules={{
+        required: {
+          value: required,
+          message: "Please enter a valid value",
+        },
+      }}
+      render={({ field, fieldState: { error } }) => (
+        <TextField
+          {...field}
+          type={type}
+          data-testid={testId}
+          required={required}
+          fullWidth={fullWidth}
+          placeholder={placeHolder}
+          error={Boolean(error)}
+          helperText={error?.message}
+        />
+      )}
     />
   );
 };

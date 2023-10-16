@@ -6,4 +6,8 @@ export interface CustomTextFieldProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<any, any>;
   type?: string;
+  placeHolder?: string;
+  testId?: string;
+  required?: boolean;
+  fullWidth?: boolean;
 }
