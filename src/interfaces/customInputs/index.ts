@@ -7,7 +7,7 @@ export interface CustomTextFieldProps {
   control: Control<any, any>;
   type?: string;
   placeHolder?: string;
-  testId?: string;
+  testid?: string;
   required?: boolean;
   fullWidth?: boolean;
 }

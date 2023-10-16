@@ -4,6 +4,7 @@ import Register from "../screens/Authentication/Register";
 import Dashboard from "../screens/Portfolio/Dashboard";
 import AboutMe from "../screens/Portfolio/About";
 import ContactMe from "../screens/Portfolio/ContactMe";
+import ForgotPassword from "../screens/Authentication/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         Component: Register
+      },
+      {
+        path: 'forgot-password',
+        Component: ForgotPassword,
       }
     ]
   },

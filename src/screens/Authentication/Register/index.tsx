@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import Button from "@mui/material/Button";
+import { Button, Grid, Typography } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 import { useNavigate } from "react-router-dom";
 import { RegisterFormFields } from "../../../interfaces/auth";
@@ -26,22 +26,48 @@ const Register: React.FC = () => {
   const errorMessage = getErrorMessage(error);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <CustomTextField control={control} name={"email"} type="email" />
-      <CustomTextField control={control} name={"password"} type="password" />
-      {isError && errorMessage}
-      <Button type="submit" variant="contained">
-        {isLoading ? "Loading " : "Register"}
-      </Button>
-      <Button
-        variant="text"
-        type="button"
-        onClick={() => navigate("/auth/login")}
-      >
-        Already a member? Login
-      </Button>
-      <DevTool control={control} />
-    </form>
+    <Grid container justifyContent="center" alignItems="center" height="100%">
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Grid container gap={1} justifyContent="center" maxWidth={500}>
+          <CustomTextField
+            control={control}
+            name={"email"}
+            type="email"
+            testid="login-email-input"
+            placeHolder="Email"
+            required={true}
+          />
+          <CustomTextField
+            control={control}
+            name={"password"}
+            type="password"
+            testid="login-password-input"
+            placeHolder="Password"
+            required={true}
+          />
+          <Typography align="center" color="red">
+            {isError && errorMessage}
+          </Typography>
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            data-testid="register-submit-button"
+          >
+            {isLoading ? "Loading " : "Register"}
+          </Button>
+          <Button
+            variant="text"
+            type="button"
+            data-testid="register-login-button"
+            onClick={() => navigate("/auth/login")}
+          >
+            Already a member? Login
+          </Button>
+          <DevTool control={control} />
+        </Grid>
+      </form>
+    </Grid>
   );
 };
 

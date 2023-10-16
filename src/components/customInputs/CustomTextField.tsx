@@ -6,7 +6,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
   name,
   control,
   type = "text",
-  testId,
+  testid,
   placeHolder,
   required = false,
   fullWidth = true,
@@ -25,7 +25,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
         <TextField
           {...field}
           type={type}
-          data-testid={testId}
+          data-testid={testid}
           required={required}
           fullWidth={fullWidth}
           placeholder={placeHolder}

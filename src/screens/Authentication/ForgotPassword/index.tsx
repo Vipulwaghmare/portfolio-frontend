@@ -1,17 +1,14 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, Typography, Grid } from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 import { LoginFormFields } from "../../../interfaces/auth";
-import { DevTool } from "@hookform/devtools";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
-import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { login } from "../../../services/auth";
+import { forgotPassword } from "../../../services/auth";
 import { getErrorMessage } from "../../../utils/helpers";
 
-const Login: React.FC = () => {
-  const navigate = useNavigate();
+const ForgotPassword: React.FC = () => {
   const { mutate, isError, isLoading, error } = useMutation({
-    mutationFn: login,
+    mutationFn: forgotPassword,
     // onSuccess: data => {
     //   queryClient.setQueryData(["posts", data.id], data)
     //   queryClient.invalidateQueries(["posts"], { exact: true })
@@ -21,18 +18,15 @@ const Login: React.FC = () => {
 
   const { handleSubmit, control } = useForm<LoginFormFields>({
     defaultValues: {
-      email: "",
       password: "",
     },
   });
-  // console.log({ isError, isLoading, data });
 
   const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
     mutate(data);
   };
 
   const errorMessage = getErrorMessage(error);
-
   return (
     <Grid container justifyContent="center" alignItems="center" height="100%">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -45,14 +39,6 @@ const Login: React.FC = () => {
             placeHolder="Email"
             required={true}
           />
-          <CustomTextField
-            control={control}
-            name={"password"}
-            type="password"
-            testid="login-password-input"
-            placeHolder="Password"
-            required={true}
-          />
           <Typography align="center" color="red">
             {isError && errorMessage}
           </Typography>
@@ -60,33 +46,14 @@ const Login: React.FC = () => {
             type="submit"
             variant="contained"
             fullWidth
-            data-testid="login-submit-button"
+            data-testid="forgot-password-submit-button"
           >
-            {isLoading ? "Loading " : "Login"}
+            {isLoading ? "Loading " : "Get Forgot Password Email"}
           </Button>
-          <Button
-            variant="text"
-            type="button"
-            onClick={() => navigate("/auth/register")}
-            data-testid="login-register-button"
-            color="info"
-          >
-            Not a member? Register
-          </Button>
-          <Button
-            variant="text"
-            type="button"
-            onClick={() => navigate("/auth/forgot-password")}
-            data-testid="login-forgot-password-button"
-            color="error"
-          >
-            Forgot Password?
-          </Button>
-          <DevTool control={control} />
         </Grid>
       </form>
     </Grid>
   );
 };
 
-export default Login;
+export default ForgotPassword;
