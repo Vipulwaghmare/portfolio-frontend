@@ -6,6 +6,10 @@ import AboutMe from "../screens/Portfolio/About";
 import ContactMe from "../screens/Portfolio/ContactMe";
 import ForgotPassword from "../screens/Authentication/ForgotPassword";
 import Projects from "../screens/Portfolio/Projects";
+import EcommerceBase from "../screens/ECommerce";
+import EcommerceDashboard from "../screens/ECommerce/Dashboard";
+import EcommerceCart from "../screens/ECommerce/Cart";
+import ProductDetails from "../screens/ECommerce/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,24 @@ const router = createBrowserRouter([
         path: 'forgot-password',
         Component: ForgotPassword,
       }
+    ]
+  },
+  {
+    path: "/shopping",
+    Component: EcommerceBase,
+    children: [
+      {
+        path: 'dashboard',
+        Component: EcommerceDashboard,
+      },
+      {
+        path: 'cart',
+        Component: EcommerceCart,
+      },
+      {
+        path: 'product',
+        Component: ProductDetails,
+      },
     ]
   },
 ])

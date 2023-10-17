@@ -7,7 +7,13 @@ const projectData: ProjectCardInterface[] = [
     title: "Authentication",
     description:
       "User Authentication with React Native, Express, React Query, React Hook Form",
-    detailPath: "/atea",
+    detailPath: "/overview/auth",
+    imagePath: "",
+  },
+  {
+    title: "Ecommerce",
+    description: "Ecommerce with Redux toolkit, RTK Query",
+    detailPath: "/overview/ecommerce",
     imagePath: "",
   },
 ];
