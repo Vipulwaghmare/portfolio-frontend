@@ -5,6 +5,7 @@ import Dashboard from "../screens/Portfolio/Dashboard";
 import AboutMe from "../screens/Portfolio/About";
 import ContactMe from "../screens/Portfolio/ContactMe";
 import ForgotPassword from "../screens/Authentication/ForgotPassword";
+import Projects from "../screens/Portfolio/Projects";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/contact-me",
     Component: ContactMe,
+  },
+  {
+    path: "/projects",
+    Component: Projects,
   },
   {
     path: "/auth",
