@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import TodoContextProvider from "../../utils/todoContext";
 
-const ToDoBAse: React.FC = () => {
+const ToDoBase: React.FC = () => {
   return (
     <TodoContextProvider>
       <header>To Do List</header>
@@ -10,4 +10,4 @@ const ToDoBAse: React.FC = () => {
   );
 };
 
-export default ToDoBAse;
+export default ToDoBase;

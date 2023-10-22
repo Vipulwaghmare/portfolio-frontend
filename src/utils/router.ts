@@ -10,6 +10,10 @@ import EcommerceBase from "../screens/ECommerce";
 import EcommerceDashboard from "../screens/ECommerce/Dashboard";
 import EcommerceCart from "../screens/ECommerce/Cart";
 import ProductDetails from "../screens/ECommerce/ProductDetails";
+import TodoBase from "../screens/ToDoList";
+import AddTodo from "../screens/ToDoList/AddTodo";
+import EditTodo from "../screens/ToDoList/EditTodo";
+import TodoDashboard from "../screens/ToDoList/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +47,24 @@ const router = createBrowserRouter([
         path: 'forgot-password',
         Component: ForgotPassword,
       }
+    ]
+  },
+  {
+    path: "/todo",
+    Component: TodoBase,
+    children: [
+      {
+        path: '',
+        Component: TodoDashboard,
+      },
+      {
+        path: 'add',
+        Component: AddTodo,
+      },
+      {
+        path: 'edit',
+        Component: AddTodo,
+      },
     ]
   },
   {

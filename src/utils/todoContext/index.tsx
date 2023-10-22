@@ -1,14 +1,24 @@
 import { createContext, useReducer, FC } from "react";
+import todoReducer from "./reducer";
+import {
+  TodoContextInterface,
+  TodoContextProps,
+  TodoStateInterface,
+} from "../../interfaces/todoList/reducer";
 
-const initialState = {};
+const initialState: TodoStateInterface = {
+  todos: [],
+};
 
-const TodoContext = createContext(initialState);
+export const TodoContext = createContext<TodoContextInterface | undefined>(
+  undefined,
+);
 
-const TodoContextProvider: FC = ({ children }) => {
-  // const [theme, setTheme] = useState("dark")
+const TodoContextProvider: FC<TodoContextProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
 
   return (
-    <TodoContext.Provider value={{ theme, setTheme }}>
+    <TodoContext.Provider value={{ state, dispatch }}>
       {children}
     </TodoContext.Provider>
   );
