@@ -14,13 +14,11 @@ const TodoDashboard: React.FC = () => {
     // TODO: Recover the list
   };
   return (
-    <>
-      <Grid>
-        <Button onClick={onBackup}>Backup</Button>
-        <Button onClick={onRecover}>Recover</Button>
-        <Button onClick={() => navigate("/todo/add")}>Add Todo</Button>
-      </Grid>
-    </>
+    <Grid>
+      <Button onClick={onBackup}>Backup</Button>
+      <Button onClick={onRecover}>Recover</Button>
+      <Button onClick={() => navigate("/todo/add")}>Add Todo</Button>
+    </Grid>
   );
 };
 
