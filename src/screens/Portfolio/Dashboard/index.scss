@@ -1,0 +1,168 @@
+$backgroundColor: #101010;
+$variable: #f4f4f4;
+$primaryColor: #f5ac05;
+$maxWidth: 1000px;
+.portfolio_container {
+  background-color: $backgroundColor;
+  color: $variable;
+  section {
+    padding: 16px 0;
+  }
+  .main_title {
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    font-size: 40px;
+    margin: 10px 0px;
+    span {
+      color: $primaryColor;
+    }
+    p {
+      position: absolute;
+      font-size: 65px;
+      top: -19px;
+      left: 0;
+      right: 0;
+      opacity: 0.1;
+      letter-spacing: 13px;
+    }
+  }
+  .primary_button {
+    text-transform: uppercase;
+    font-weight: bold;
+    background: transparent;
+    height: 34px;
+    color: white;
+    width: 200px;
+    border: 1px solid $primaryColor;
+    border-radius: 17px;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    padding-left: 31px;
+    cursor: pointer;
+    div {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      height: 34px;
+      width: 34px;
+      padding: 8px;
+      background: $primaryColor;
+      border-radius: 50%;
+      border: 1px solid $primaryColor;
+      // transform: rotate(-45deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        font-size: 20px;
+        // transform: translateX(2px);
+      }
+    }
+  }
+  header {
+    background-color: $primaryColor;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .nav-container {
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+      a {
+        color: #000000;
+        border-bottom: 5px solid transparent;
+        &:hover {
+          border-bottom: 5px solid #e7e4db;
+        }
+      }
+    }
+  }
+  #about {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    .main_data {
+      display: flex;
+      & > div {
+        flex: 1;
+      }
+      .data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .skills {
+      }
+    }
+  }
+  #contact-me {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    .data-container {
+      display: flex;
+      gap: 10px;
+      margin: 20px;
+      .personal_details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h4 {
+          text-transform: uppercase;
+          font-size: 20px;
+        }
+        .data {
+          .label {
+            color: #737373;
+          }
+          .value {
+            color: #999999;
+          }
+        }
+        .social {
+          display: flex;
+          gap: 16px;
+          svg {
+            color: #fff;
+            background-color: #282828;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            &:hover {
+              color: $primaryColor;
+            }
+          }
+        }
+      }
+      form {
+        // max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 16px;
+        .user_data {
+          display: flex;
+          gap: 20px;
+        }
+        input,
+        textarea {
+          background-color: #242424;
+          height: 25px;
+          flex: 1;
+          padding: 8px;
+          border-radius: 5px;
+          color: $primaryColor;
+        }
+        textarea {
+          min-height: 120px;
+        }
+      }
+    }
+  }
+  footer {
+    height: 24px;
+  }
+}
