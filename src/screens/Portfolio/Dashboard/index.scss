@@ -2,6 +2,8 @@ $backgroundColor: #101010;
 $variable: #f4f4f4;
 $primaryColor: #f5ac05;
 $maxWidth: 1000px;
+$headerHeight: 50px;
+
 .portfolio_container {
   background-color: $backgroundColor;
   color: $variable;
@@ -64,7 +66,7 @@ $maxWidth: 1000px;
   }
   header {
     background-color: $primaryColor;
-    height: 50px;
+    height: $headerHeight;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,6 +80,33 @@ $maxWidth: 1000px;
         &:hover {
           border-bottom: 5px solid #e7e4db;
         }
+      }
+    }
+  }
+  main {
+    position: relative;
+    .wave {
+      position: absolute;
+      top: 0;
+    }
+  }
+  #landing {
+    height: calc(100vh - #{$headerHeight});
+    width: 90%;
+    max-width: calc(#{$maxWidth} + 200px);
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    margin: 0 auto;
+    & > div {
+      z-index: 2;
+    }
+    .info {
+      .name {
+        color: $primaryColor;
+        font-size: 40px;
+        text-transform: uppercase;
       }
     }
   }
@@ -95,6 +124,51 @@ $maxWidth: 1000px;
         justify-content: space-between;
       }
       .skills {
+        h3 {
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 30px;
+        }
+        & > div {
+          // position: relative;
+          // height: 250px;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          & > div {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: 1px solid $primaryColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // position: absolute;
+            &:nth-child(1) {
+              left: 0;
+            }
+            &:nth-child(2) {
+              left: 80px;
+              top: 20px;
+            }
+            &:nth-child(3) {
+              left: 160px;
+              top: 40px;
+            }
+            &:nth-child(4) {
+              left: 240px;
+              top: 60px;
+            }
+            &:nth-child(5) {
+              left: 320px;
+              top: 90px;
+            }
+            &:nth-child(6) {
+              left: 160px;
+              bottom: 40px;
+            }
+          }
+        }
       }
     }
   }
