@@ -9,11 +9,6 @@ import { getErrorMessage } from "../../../utils/helpers";
 const ForgotPassword: React.FC = () => {
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: forgotPassword,
-    // onSuccess: data => {
-    //   queryClient.setQueryData(["posts", data.id], data)
-    //   queryClient.invalidateQueries(["posts"], { exact: true })
-    //   setCurrentPage(<Post id={data.id} />)
-    // },
   });
 
   const { handleSubmit, control } = useForm<LoginFormFields>({

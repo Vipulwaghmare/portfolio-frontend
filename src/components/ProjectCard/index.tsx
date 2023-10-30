@@ -36,13 +36,15 @@ const ProjectCard: React.FC<ProjectCardInterface> = ({
   const navigate = useNavigate();
   return (
     <div className="project-card">
-      <img alt={title} height="140" src={imagePath} />
-      <div>
+      <div className="img-container">
+        <img alt={title} height="140" src={imagePath} />
+      </div>
+      <div className="details">
         <div>
-          <p>{title}</p>
+          <p className="title">{title}</p>
           <p>{description}</p>
         </div>
-        <div>
+        <div className="btn-container">
           <button onClick={() => setOpen(true)}>Open</button>
           <button onClick={() => navigate(detailPath)}>View</button>
           {frontendLink ? (

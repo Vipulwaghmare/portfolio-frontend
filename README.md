@@ -1,3 +1,12 @@
+- About this projec
+  This is portfolio project made by me
+
+How to run
+
+```
+npm run dev
+```
+
 Cypress Env Variables
 
 ```

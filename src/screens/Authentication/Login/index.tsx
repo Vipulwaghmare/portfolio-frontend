@@ -12,11 +12,6 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: login,
-    // onSuccess: data => {
-    //   queryClient.setQueryData(["posts", data.id], data)
-    //   queryClient.invalidateQueries(["posts"], { exact: true })
-    //   setCurrentPage(<Post id={data.id} />)
-    // },
   });
 
   const { handleSubmit, control } = useForm<LoginFormFields>({
@@ -25,7 +20,6 @@ const Login: React.FC = () => {
       password: "",
     },
   });
-  // console.log({ isError, isLoading, data });
 
   const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
     mutate(data);

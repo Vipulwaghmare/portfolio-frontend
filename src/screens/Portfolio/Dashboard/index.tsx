@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import ContactMe from "./ContactMe";
 import AboutMe from "./About";
 import "./index.scss";
@@ -6,7 +5,6 @@ import profilePic from "../../../assets/profile_pic.jpg";
 import topWave from "/wave.svg";
 
 const Dashboard: React.FC = () => {
-  // const navigate = useNavigate();
   return (
     <div className="portfolio_container">
       <header>

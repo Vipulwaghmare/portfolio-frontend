@@ -4,22 +4,30 @@ import "./index.scss";
 
 const projectData: ProjectCardInterface[] = [
   {
+    title: "Portfolio",
+    description:
+      "Current portfolio made with React, SCSS only. More details below",
+    detailPath: "/",
+    imagePath: "",
+  },
+  {
     title: "Authentication",
     description:
-      "User Authentication with React Native, Express, React Query, React Hook Form",
-    detailPath: "/overview/auth",
+      "User Authentication with React, React Query, React Hook Form, Express, JWT token",
+    detailPath: "/auth/login",
     imagePath: "",
   },
   {
     title: "Todo App",
-    description: "Ecommerce with Redux toolkit, RTK Query",
-    detailPath: "/overview/ecommerce",
+    description: "Todo app with frontedn pagination, filtering, sorting",
+    detailPath: "/todo",
     imagePath: "",
   },
   {
     title: "Ecommerce",
-    description: "Ecommerce with Redux toolkit, RTK Query",
-    detailPath: "/overview/ecommerce",
+    description:
+      "Ecommerce with Redux toolkit, RTK Query, Backend pagination, Infinity Scrolling",
+    detailPath: "/shopping",
     imagePath: "",
   },
 ];

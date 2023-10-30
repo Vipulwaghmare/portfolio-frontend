@@ -34,7 +34,7 @@ const AboutMe: React.FC = () => {
             </div>
           </div>
           <button className="primary_button">
-            Send Message
+            Download CV
             <div>
               <DownloadIcon />
             </div>

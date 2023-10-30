@@ -20,9 +20,12 @@ const Register: React.FC = () => {
     },
   });
 
+  const goToLogin = () => navigate("/auth/login");
+
   const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {
     mutate(data);
   };
+
   const errorMessage = getErrorMessage(error);
 
   return (
@@ -60,7 +63,7 @@ const Register: React.FC = () => {
             variant="text"
             type="button"
             data-testid="register-login-button"
-            onClick={() => navigate("/auth/login")}
+            onClick={goToLogin}
           >
             Already a member? Login
           </Button>
