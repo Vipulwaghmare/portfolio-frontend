@@ -1,6 +1,6 @@
-import { Grid } from "@mui/material";
 import ProjectCard from "../../../components/ProjectCard";
 import { ProjectCardInterface } from "../../../interfaces/projects/card";
+import "./index.scss";
 
 const projectData: ProjectCardInterface[] = [
   {
@@ -8,6 +8,12 @@ const projectData: ProjectCardInterface[] = [
     description:
       "User Authentication with React Native, Express, React Query, React Hook Form",
     detailPath: "/overview/auth",
+    imagePath: "",
+  },
+  {
+    title: "Todo App",
+    description: "Ecommerce with Redux toolkit, RTK Query",
+    detailPath: "/overview/ecommerce",
     imagePath: "",
   },
   {
@@ -20,15 +26,14 @@ const projectData: ProjectCardInterface[] = [
 
 const Projects: React.FC = () => {
   return (
-    <Grid container gap={2}>
-      {projectData.map((data, index) => {
-        return (
-          <Grid item xs={12} md={6}>
-            <ProjectCard key={index} {...data} />;
-          </Grid>
-        );
-      })}
-    </Grid>
+    <div className="projects-container">
+      <h1>Projects</h1>
+      <div>
+        {projectData.map((data, index) => {
+          return <ProjectCard key={index} {...data} />;
+        })}
+      </div>
+    </div>
   );
 };
 

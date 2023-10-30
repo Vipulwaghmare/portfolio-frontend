@@ -14,7 +14,7 @@ const Dashboard: React.FC = () => {
         <div className="nav-container">
           <a href={"#about"}>About Me</a>
           <a href={"#contact-me"}>Contact Me</a>
-          <a href={"#projects"}>Projects</a>
+          <a href="/projects">Projects</a>
         </div>
       </header>
       <main>

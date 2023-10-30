@@ -1,0 +1,38 @@
+.projects-container {
+  background: rgb(46, 51, 57);
+  background: linear-gradient(
+    180deg,
+    rgba(31, 37, 47, 1) 17%,
+    rgba(46, 51, 57, 1) 49%,
+    rgba(31, 37, 47, 1) 88%
+  );
+
+  min-height: 100vh;
+  padding: 16px;
+  color: white;
+  h1 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  & > div {
+    display: flex;
+    row-gap: 24px;
+    column-gap: 16px;
+    flex-wrap: wrap;
+    .project-card {
+      flex: 1;
+      background: rgb(30, 33, 39);
+      background: linear-gradient(
+        180deg,
+        rgba(30, 33, 39, 1) 0%,
+        rgba(26, 31, 38, 1) 100%
+      );
+      max-width: 400px;
+      min-width: 300px;
+      max-height: 500px;
+      min-height: 400px;
+      padding: 16px;
+      border-radius: 16px;
+    }
+  }
+}

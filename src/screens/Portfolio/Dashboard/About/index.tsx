@@ -11,6 +11,27 @@ const AboutMe: React.FC = () => {
         <div className="data">
           <div>
             <p>Personal Info</p>
+            <div>
+              <div>
+                <p>
+                  First Name: <span>Vipul</span>
+                </p>
+                <p>
+                  Last Name: <span>Waghmare</span>
+                </p>
+              </div>
+              <div>
+                <p>
+                  Address: <span>Navi Mumbai, India</span>
+                </p>
+                <p>
+                  Nationality: <span>Indian</span>
+                </p>
+                <p>
+                  Email: <span>vipulwaghmare222@gmail.com</span>
+                </p>
+              </div>
+            </div>
           </div>
           <button className="primary_button">
             Send Message
