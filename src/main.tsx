@@ -12,12 +12,15 @@ import "./index.scss";
 import router from "./utils/router";
 import queryClient from "./utils/queryClient";
 import ErrorBoundary from "./components/ErrorBoundary";
+import setupSentry from "./utils/setupSentry";
 
 const darkTheme = createTheme({
   palette: {
     mode: "light",
   },
 });
+
+setupSentry();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

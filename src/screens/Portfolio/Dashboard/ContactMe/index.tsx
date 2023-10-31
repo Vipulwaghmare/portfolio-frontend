@@ -54,7 +54,7 @@ const ContactMe: React.FC = () => {
           </div>
           <div className="social">
             {socialData.map(({ link, Icon }) => (
-              <a href={link} target="_blank">
+              <a href={link} target="_blank" key={link}>
                 <Icon />
               </a>
             ))}

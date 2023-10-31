@@ -1,13 +1,6 @@
-// import {
-//   IconButton,
-//   Card,
-//   CardActions,
-//   CardMedia,
-//   CardContent,
-//   Button,
-//   Typography,
-// } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import InfoIcon from "@mui/icons-material/Info";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useNavigate } from "react-router-dom";
 import { ProjectCardInterface } from "../../interfaces/projects/card";
 import { useState } from "react";
@@ -45,8 +38,12 @@ const ProjectCard: React.FC<ProjectCardInterface> = ({
           <p>{description}</p>
         </div>
         <div className="btn-container">
-          <button onClick={() => setOpen(true)}>Open</button>
-          <button onClick={() => navigate(detailPath)}>View</button>
+          <button onClick={() => setOpen(true)}>
+            <InfoIcon />
+          </button>
+          <button onClick={() => navigate(detailPath)}>
+            <OpenInNewIcon />
+          </button>
           {frontendLink ? (
             <button onClick={() => navigate(frontendLink)}>
               <GitHubIcon />

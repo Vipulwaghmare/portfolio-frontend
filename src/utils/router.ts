@@ -74,6 +74,13 @@ const router = createBrowserRouter([
       },
     ]
   },
+  // {
+  //   path: "/social",
+  //   Component: Social,
+  //   children: [
+  // firebase , chat, 
+  //   ]
+  // }
 ])
 
 export default router;
