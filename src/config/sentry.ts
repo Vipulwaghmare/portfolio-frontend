@@ -2,7 +2,7 @@ import * as Sentry from "@sentry/react";
 
 const setupSentry = () => {
   Sentry.init({
-    dsn: import.meta.env.SENTRY_KEY,
+    dsn: import.meta.env.VITE_SENTRY_KEY,
     integrations: [
       new Sentry.BrowserTracing({
         tracePropagationTargets: ["localhost", /^https:\/\/yourserver\.io\/api/],

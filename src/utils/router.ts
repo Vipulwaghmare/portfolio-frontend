@@ -11,6 +11,9 @@ import ProductDetails from "../screens/ECommerce/ProductDetails";
 import TodoBase from "../screens/ToDoList";
 import AddTodo from "../screens/ToDoList/AddTodo";
 import TodoDashboard from "../screens/ToDoList/Dashboard";
+import Social from "../screens/Social";
+import SocialLogin from "../screens/Social/Authentication/Login";
+import SocialSignup from "../screens/Social/Authentication/Signup";
 
 const router = createBrowserRouter([
   {
@@ -74,13 +77,22 @@ const router = createBrowserRouter([
       },
     ]
   },
-  // {
-  //   path: "/social",
-  //   Component: Social,
-  //   children: [
-  // firebase , chat, 
-  //   ]
-  // }
+  {
+    path: "/social",
+    Component: Social,
+    children: [
+
+      {
+        path: 'login',
+        Component: SocialLogin,
+      },
+      {
+        path: 'signup',
+        Component: SocialSignup
+      },
+      // firebase , chat, 
+    ]
+  }
 ])
 
 export default router;

@@ -12,7 +12,7 @@ import "./index.scss";
 import router from "./utils/router";
 import queryClient from "./utils/queryClient";
 import ErrorBoundary from "./components/ErrorBoundary";
-import setupSentry from "./utils/setupSentry";
+import setupSentry from "./config/sentry";
 
 const darkTheme = createTheme({
   palette: {
