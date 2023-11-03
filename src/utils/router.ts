@@ -14,6 +14,9 @@ import TodoDashboard from "../screens/ToDoList/Dashboard";
 import Social from "../screens/Social";
 import SocialLogin from "../screens/Social/Authentication/Login";
 import SocialSignup from "../screens/Social/Authentication/Signup";
+import ResetPassword from "../screens/Authentication/ResetPassword";
+import AuthLayout from "../screens/Authentication";
+import AuthDashboard from "../screens/Authentication/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth",
+    Component: AuthLayout,
     children: [
       {
         path: 'login',
@@ -38,7 +42,15 @@ const router = createBrowserRouter([
       {
         path: 'forgot-password',
         Component: ForgotPassword,
-      }
+      },
+      {
+        path: 'reset-password/:token',
+        Component: ResetPassword,
+      },
+      {
+        path: 'dashboard',
+        Component: AuthDashboard,
+      },
     ]
   },
   {

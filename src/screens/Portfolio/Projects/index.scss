@@ -19,6 +19,7 @@
     row-gap: 24px;
     column-gap: 16px;
     flex-wrap: wrap;
+    justify-content: center;
     .project-card {
       flex: 1;
       background: rgb(30, 33, 39);
@@ -52,6 +53,21 @@
         .btn-container {
           display: flex;
           gap: 10px;
+          & > button {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            border: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+              background-color: #363a40;
+              color: #fff;
+              transform: scale(1.05);
+              transition: transform 0.2s;
+            }
+          }
         }
       }
     }

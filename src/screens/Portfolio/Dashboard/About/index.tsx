@@ -33,7 +33,12 @@ const AboutMe: React.FC = () => {
               </div>
             </div>
           </div>
-          <button className="primary_button">
+          <button
+            className="primary_button"
+            onClick={() =>
+              window.open("https://read.cv/vipulwaghmare", "_blank")
+            }
+          >
             Download CV
             <div>
               <DownloadIcon />

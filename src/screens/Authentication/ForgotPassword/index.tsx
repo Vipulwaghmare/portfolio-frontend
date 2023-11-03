@@ -9,6 +9,7 @@ import { getErrorMessage } from "../../../utils/helpers";
 const ForgotPassword: React.FC = () => {
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: forgotPassword,
+    // TODO: Show on success model to show that the email is sent successfully
   });
 
   const { handleSubmit, control } = useForm<LoginFormFields>({
@@ -17,9 +18,7 @@ const ForgotPassword: React.FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
-    mutate(data);
-  };
+  const onSubmit: SubmitHandler<LoginFormFields> = (data) => mutate(data);
 
   const errorMessage = getErrorMessage(error);
   return (

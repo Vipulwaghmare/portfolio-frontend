@@ -4,6 +4,13 @@ export interface LoginFormFields {
 }
 
 export interface RegisterFormFields {
+  name: string;
   email: string;
   password: string;
+}
+
+export interface ResetPasswordFormFields {
+  password: string;
+  confirmPassword: string;
+  token: string;
 }

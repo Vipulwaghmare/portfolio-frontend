@@ -10,17 +10,22 @@ import { useMutation } from "@tanstack/react-query";
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+
+  const navigateToLogin = () => navigate("/auth/login");
+
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: register,
+    // TODO: Add a modal to show that user is registred successfully
+    onSuccess: () => navigateToLogin(),
   });
+
   const { handleSubmit, control } = useForm<RegisterFormFields>({
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
   });
-
-  const goToLogin = () => navigate("/auth/login");
 
   const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {
     mutate(data);
@@ -32,6 +37,13 @@ const Register: React.FC = () => {
     <Grid container justifyContent="center" alignItems="center" height="100%">
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Grid container gap={1} justifyContent="center" maxWidth={500}>
+          <CustomTextField
+            control={control}
+            name={"name"}
+            testid="login-name-input"
+            placeHolder="Name"
+            required={true}
+          />
           <CustomTextField
             control={control}
             name={"email"}
@@ -63,7 +75,7 @@ const Register: React.FC = () => {
             variant="text"
             type="button"
             data-testid="register-login-button"
-            onClick={goToLogin}
+            onClick={navigateToLogin}
           >
             Already a member? Login
           </Button>

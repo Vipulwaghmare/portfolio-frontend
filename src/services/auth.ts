@@ -14,3 +14,8 @@ export const forgotPassword = async (payload: object) => {
   const { data } = await api.post('/api/v1/forgot-password', payload)
   return data;
 };
+
+export const resetPassword = async (payload: object) => {
+  const { data } = await api.post('/api/v1/reset-password', payload)
+  return data;
+};

@@ -6,12 +6,16 @@ import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../../../services/auth";
-import { getErrorMessage } from "../../../utils/helpers";
+import { getErrorMessage, setTokensToLocalStorage } from "../../../utils";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: login,
+    onSuccess: (data) => {
+      setTokensToLocalStorage(data);
+      navigate("/auth/dashboard");
+    },
   });
 
   const { handleSubmit, control } = useForm<LoginFormFields>({
@@ -21,9 +25,7 @@ const Login: React.FC = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<LoginFormFields> = (data) => {
-    mutate(data);
-  };
+  const onSubmit: SubmitHandler<LoginFormFields> = (data) => mutate(data);
 
   const errorMessage = getErrorMessage(error);
 

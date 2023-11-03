@@ -30,6 +30,12 @@ const projectData: ProjectCardInterface[] = [
     detailPath: "/shopping",
     imagePath: "",
   },
+  {
+    title: "Social",
+    description: "Chat application with firebase",
+    detailPath: "/social/login",
+    imagePath: "",
+  },
 ];
 
 const Projects: React.FC = () => {
