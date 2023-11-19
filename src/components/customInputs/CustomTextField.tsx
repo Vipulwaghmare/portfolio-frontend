@@ -2,7 +2,7 @@ import { Controller } from "react-hook-form";
 import { ICustomTextField } from "../../interfaces/customInputs";
 import { TextField } from "@mui/material";
 
-const CustomTextField: React.FC<ICustomTextField> = ({
+const CustomTextField = ({
   name,
   control,
   type = "text",
@@ -10,7 +10,7 @@ const CustomTextField: React.FC<ICustomTextField> = ({
   placeHolder,
   required = false,
   fullWidth = true,
-}) => {
+}: ICustomTextField) => {
   return (
     <Controller
       name={name}

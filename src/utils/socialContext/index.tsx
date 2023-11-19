@@ -1,16 +1,16 @@
-import { createContext, useReducer, FC } from "react";
+import { createContext, useReducer } from "react";
 import socialReducer from "./reducer";
 import {
   SocialContextInterface,
-  SocialContextProps,
   SocialStateInterface,
 } from "../../interfaces/social/socialContext";
+import { IWrapper } from "../../interfaces/common";
 
 const initialState: SocialStateInterface = {};
 
 export const SocialContext = createContext<SocialContextInterface | null>(null);
 
-const SocialContextProvider: FC<SocialContextProps> = ({ children }) => {
+const SocialContextProvider = ({ children }: IWrapper) => {
   const [state, dispatch] = useReducer(socialReducer, initialState);
 
   return (

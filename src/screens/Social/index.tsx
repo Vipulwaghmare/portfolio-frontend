@@ -19,7 +19,7 @@ const SocialAuth = () => {
   return <Outlet />;
 };
 
-const Social: React.FC = () => {
+const Social = () => {
   return (
     <SocialContextProvider>
       <SocialAuth />

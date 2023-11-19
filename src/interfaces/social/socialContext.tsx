@@ -1,5 +1,5 @@
 import { User } from "firebase/auth";
-import { ReactNode, Dispatch } from "react";
+import { Dispatch } from "react";
 
 export interface SocialStateInterface {
   user?: User;
@@ -14,8 +14,4 @@ export interface SocialActionsInterface {
 export interface SocialContextInterface {
   state: SocialStateInterface;
   dispatch: Dispatch<SocialActionsInterface>;
-}
-
-export interface SocialContextProps {
-  children: ReactNode;
 }

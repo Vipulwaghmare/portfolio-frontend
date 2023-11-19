@@ -1,4 +1,4 @@
-import { ReactNode, Dispatch } from "react";
+import { Dispatch } from "react";
 
 export interface TodoInterface {
   id: string;
@@ -20,8 +20,4 @@ export interface TodoActionInterface {
 export interface TodoContextInterface {
   state: TodoStateInterface;
   dispatch: Dispatch<TodoActionInterface>;
-}
-
-export interface TodoContextProps {
-  children: ReactNode;
 }

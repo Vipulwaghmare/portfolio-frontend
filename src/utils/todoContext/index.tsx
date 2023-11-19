@@ -1,10 +1,10 @@
-import { createContext, useReducer, FC } from "react";
+import { createContext, useReducer } from "react";
 import todoReducer from "./reducer";
 import {
   TodoContextInterface,
-  TodoContextProps,
   TodoStateInterface,
 } from "../../interfaces/todoList/reducer";
+import { IWrapper } from "../../interfaces/common";
 
 const initialState: TodoStateInterface = {
   todos: [],
@@ -12,7 +12,7 @@ const initialState: TodoStateInterface = {
 
 export const TodoContext = createContext<TodoContextInterface | null>(null);
 
-const TodoContextProvider: FC<TodoContextProps> = ({ children }) => {
+const TodoContextProvider = ({ children }: IWrapper) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
   return (
