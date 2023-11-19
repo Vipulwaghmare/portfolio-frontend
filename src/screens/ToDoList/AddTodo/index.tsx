@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 import CustomDatepicker from "../../../components/customInputs/CustomDatepicker";
 
-const AddTodo: React.FC = () => {
+const AddTodo = () => {
   const { handleSubmit, control } = useForm<TodoInterface>({
     defaultValues: {
       completed: false,

@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { forgotPassword } from "../../../services/auth";
 import { getErrorMessage } from "../../../utils/helpers";
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword = () => {
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: forgotPassword,
     // TODO: Show on success model to show that the email is sent successfully

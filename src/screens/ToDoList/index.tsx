@@ -3,7 +3,7 @@ import TodoContextProvider from "../../utils/todoContext";
 
 // import { getAuth } from "firebase/auth";
 // getAuth().currentUser
-const ToDoBase: React.FC = () => {
+const ToDoBase = () => {
   return (
     <TodoContextProvider>
       <header>To Do List</header>

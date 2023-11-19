@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../../../services/auth";
 import { getErrorMessage, setTokensToLocalStorage } from "../../../utils";
 
-const Login: React.FC = () => {
+const Login = () => {
   const navigate = useNavigate();
   const { mutate, isError, isLoading, error } = useMutation({
     mutationFn: login,

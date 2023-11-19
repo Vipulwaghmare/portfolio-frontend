@@ -16,7 +16,7 @@ const ProjectModel: FC<modelInterface> = ({
   showModal,
   onClose,
   Component,
-}) => {
+}: modelInterface) => {
   if (!showModal) return null;
   return createPortal(
     <div className="project-model-container">

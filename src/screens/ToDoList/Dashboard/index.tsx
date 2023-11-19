@@ -2,7 +2,7 @@ import { Button, Grid } from "@mui/material";
 // import useTodoContext from "../../../utils/todoContext/useTodoContext";
 import { useNavigate } from "react-router-dom";
 
-const TodoDashboard: React.FC = () => {
+const TodoDashboard = () => {
   const navigate = useNavigate();
   // const { state, dispatch } = useTodoContext();
 

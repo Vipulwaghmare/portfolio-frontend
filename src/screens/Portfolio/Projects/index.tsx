@@ -38,7 +38,7 @@ const projectData: ProjectCardInterface[] = [
   },
 ];
 
-const Projects: React.FC = () => {
+const Projects = () => {
   return (
     <div className="projects-container">
       <h1>Projects</h1>

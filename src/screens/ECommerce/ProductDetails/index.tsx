@@ -2,7 +2,7 @@
 
 import { useGetProductByIdQuery } from "../../../redux/apiHooks";
 
-const ProductDetails: React.FC = () => {
+const ProductDetails = () => {
   const { data, error } = useGetProductByIdQuery("test");
   console.log({ data });
   return <>{JSON.stringify(error)}</>;

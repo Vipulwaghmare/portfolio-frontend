@@ -17,7 +17,7 @@ interface ProjectCardInterface {
 }
 
 interface testInterface extends modelCompInterface {}
-const Test: React.FC<testInterface> = ({ onClose }) => {
+const Test = ({ onClose }: testInterface) => {
   return (
     <h1>
       <button onClick={onClose}>Close</button>

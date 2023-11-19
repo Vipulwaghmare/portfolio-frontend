@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useInfiniteScroll from "../../../hooks/useInfiniteScroll";
 
-const EcommerceDashboard: React.FC = () => {
+const EcommerceDashboard = () => {
   const [test, setTest] = useState<number[]>([]);
 
   const fetchData = async (count: number) => {

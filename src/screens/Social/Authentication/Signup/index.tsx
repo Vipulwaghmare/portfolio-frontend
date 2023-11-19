@@ -1,6 +1,6 @@
 import { createFirebaseUser } from "../../../../services/firebase/firebaseAuth";
 
-const SocialSignup: React.FC = () => {
+const SocialSignup = () => {
   const onSignup = async () => {
     const test = await createFirebaseUser(
       "vipulwaghmare222@gmail.com",

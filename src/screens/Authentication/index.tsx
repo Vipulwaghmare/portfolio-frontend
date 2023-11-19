@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const AuthLayout: React.FC = () => {
+const AuthLayout = () => {
   return (
     <>
       {/* <header>Authentication</header> */}

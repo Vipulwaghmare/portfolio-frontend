@@ -29,7 +29,7 @@ const personalData = [
   },
 ];
 
-const ContactMe: React.FC = () => {
+const ContactMe = () => {
   return (
     <section id="contact-me">
       <h1 className="main_title">

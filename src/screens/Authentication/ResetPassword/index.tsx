@@ -9,7 +9,7 @@ import { DevTool } from "@hookform/devtools";
 import { getErrorMessage } from "../../../utils";
 import { useState } from "react";
 
-const ResetPassword: React.FC = () => {
+const ResetPassword = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const { token } = useParams();

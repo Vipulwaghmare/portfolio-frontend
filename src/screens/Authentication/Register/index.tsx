@@ -8,7 +8,7 @@ import { register } from "../../../services/auth";
 import { getErrorMessage } from "../../../utils/helpers";
 import { useMutation } from "@tanstack/react-query";
 
-const Register: React.FC = () => {
+const Register = () => {
   const navigate = useNavigate();
 
   const navigateToLogin = () => navigate("/auth/login");

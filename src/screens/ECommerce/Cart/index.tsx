@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react"
 
-const EcommerceCart: React.FC = () => {
+const EcommerceCart = () => {
   return <>Ecommerce Cart</>;
 };
 

@@ -3,7 +3,7 @@ import {
   firebaseUserLogin,
 } from "../../../../services/firebase/firebaseAuth";
 
-const SocialLogin: React.FC = () => {
+const SocialLogin = () => {
   const onClick = async () => {
     const test = await firebaseUserLogin(
       "vipulwaghmare222@gmail.com",

@@ -1,4 +1,4 @@
-const AuthDashboard: React.FC = () => {
+const AuthDashboard = () => {
   return <>User Email change password update user data</>;
 };
 
