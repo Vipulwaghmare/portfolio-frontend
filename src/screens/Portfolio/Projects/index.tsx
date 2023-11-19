@@ -3,13 +3,13 @@ import { ProjectCardInterface } from "../../../interfaces/projects/card";
 import "./index.scss";
 
 const projectData: ProjectCardInterface[] = [
-  {
-    title: "Portfolio",
-    description:
-      "Current portfolio made with React, SCSS only. More details below",
-    detailPath: "/",
-    imagePath: "",
-  },
+  // {
+  //   title: "Portfolio",
+  //   description:
+  //     "Current portfolio made with React, SCSS only. More details below",
+  //   detailPath: "/",
+  //   imagePath: "",
+  // },
   {
     title: "Authentication",
     description:

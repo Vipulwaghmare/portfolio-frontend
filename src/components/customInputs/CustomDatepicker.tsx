@@ -1,13 +1,13 @@
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Controller } from "react-hook-form";
-import { CustomDatepickerProps } from "../../interfaces/customInputs";
+import { ICustomDatepicker } from "../../interfaces/customInputs";
 
-const CustomDatepicker: React.FC<CustomDatepickerProps> = ({
+const CustomDatepicker = ({
   name,
   control,
   label,
   required = false,
-}) => {
+}: ICustomDatepicker) => {
   return (
     <Controller
       name={name}

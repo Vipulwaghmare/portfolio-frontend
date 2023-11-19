@@ -1,11 +1,10 @@
 import { Button, Grid } from "@mui/material";
-import useTodoContext from "../../../utils/todoContext/useTodoContext";
+// import useTodoContext from "../../../utils/todoContext/useTodoContext";
 import { useNavigate } from "react-router-dom";
 
 const TodoDashboard: React.FC = () => {
   const navigate = useNavigate();
-  const data = useTodoContext();
-  console.log({ data });
+  // const { state, dispatch } = useTodoContext();
 
   const onBackup = () => {
     // Todo: backup the list

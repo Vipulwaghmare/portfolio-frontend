@@ -2,12 +2,20 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import InfoIcon from "@mui/icons-material/Info";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useNavigate } from "react-router-dom";
-import { ProjectCardInterface } from "../../interfaces/projects/card";
 import { useState } from "react";
 import ProjectModel from "../ProjectModel";
 interface modelCompInterface {
   onClose: () => void;
 }
+interface ProjectCardInterface {
+  title: string;
+  description: string;
+  detailPath: string;
+  frontendLink?: string;
+  backendLink?: string;
+  imagePath: string;
+}
+
 interface testInterface extends modelCompInterface {}
 const Test: React.FC<testInterface> = ({ onClose }) => {
   return (
@@ -17,14 +25,14 @@ const Test: React.FC<testInterface> = ({ onClose }) => {
   );
 };
 
-const ProjectCard: React.FC<ProjectCardInterface> = ({
+const ProjectCard = ({
   title,
   description,
   detailPath,
   frontendLink,
   backendLink,
   imagePath,
-}) => {
+}: ProjectCardInterface) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   return (

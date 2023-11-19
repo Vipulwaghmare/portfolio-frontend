@@ -1,4 +1,7 @@
-import { firebaseUserLogin } from "../../../../services/firebase/firebaseAuth";
+import {
+  firebaseSignout,
+  firebaseUserLogin,
+} from "../../../../services/firebase/firebaseAuth";
 
 const SocialLogin: React.FC = () => {
   const onClick = async () => {
@@ -12,6 +15,14 @@ const SocialLogin: React.FC = () => {
   return (
     <>
       <button onClick={onClick}>onSignIn</button>
+      <button
+        onClick={async () => {
+          const rest = await firebaseSignout();
+          console.log({ rest });
+        }}
+      >
+        Signout
+      </button>
     </>
   );
 };

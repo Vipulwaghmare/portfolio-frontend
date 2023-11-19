@@ -1,8 +1,8 @@
 import { Controller } from "react-hook-form";
-import { CustomTextFieldProps } from "../../interfaces/customInputs";
+import { ICustomTextField } from "../../interfaces/customInputs";
 import { TextField } from "@mui/material";
 
-const CustomTextField: React.FC<CustomTextFieldProps> = ({
+const CustomTextField: React.FC<ICustomTextField> = ({
   name,
   control,
   type = "text",

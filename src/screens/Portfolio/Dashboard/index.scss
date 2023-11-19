@@ -115,6 +115,9 @@ $headerHeight: 50px;
     margin: 0 auto;
     .main_data {
       display: flex;
+      @media (max-width: 800px) {
+        flex-direction: column;
+      }
       & > div {
         flex: 1;
       }
@@ -179,10 +182,16 @@ $headerHeight: 50px;
       display: flex;
       gap: 10px;
       margin: 20px;
+      @media (max-width: 800px) {
+        flex-direction: column;
+      }
       .personal_details {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        @media (max-width: 800px) {
+          flex-direction: row;
+        }
         h4 {
           text-transform: uppercase;
           font-size: 20px;
@@ -198,6 +207,9 @@ $headerHeight: 50px;
         .social {
           display: flex;
           gap: 16px;
+          @media (max-width: 800px) {
+            flex-direction: column;
+          }
           svg {
             color: #fff;
             background-color: #282828;
@@ -224,7 +236,7 @@ $headerHeight: 50px;
         input,
         textarea {
           background-color: #242424;
-          height: 25px;
+          min-height: 30px;
           flex: 1;
           padding: 8px;
           border-radius: 5px;

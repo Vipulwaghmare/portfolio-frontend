@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     Component: EcommerceBase,
     children: [
       {
-        path: 'dashboard',
+        path: '',
         Component: EcommerceDashboard,
       },
       {

@@ -8,9 +8,7 @@ import {
 
 const initialState: SocialStateInterface = {};
 
-export const SocialContext = createContext<SocialContextInterface | undefined>(
-  undefined,
-);
+export const SocialContext = createContext<SocialContextInterface | null>(null);
 
 const SocialContextProvider: FC<SocialContextProps> = ({ children }) => {
   const [state, dispatch] = useReducer(socialReducer, initialState);

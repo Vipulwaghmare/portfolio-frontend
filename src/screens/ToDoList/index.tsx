@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import TodoContextProvider from "../../utils/todoContext";
 
+// import { getAuth } from "firebase/auth";
+// getAuth().currentUser
 const ToDoBase: React.FC = () => {
   return (
     <TodoContextProvider>

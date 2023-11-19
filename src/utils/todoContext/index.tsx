@@ -10,9 +10,7 @@ const initialState: TodoStateInterface = {
   todos: [],
 };
 
-export const TodoContext = createContext<TodoContextInterface | undefined>(
-  undefined,
-);
+export const TodoContext = createContext<TodoContextInterface | null>(null);
 
 const TodoContextProvider: FC<TodoContextProps> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
