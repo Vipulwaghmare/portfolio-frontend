@@ -1,10 +1,13 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Grid, Typography, Button } from "@mui/material";
-import { LoginFormFields } from "../../../interfaces/auth";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { useMutation } from "@tanstack/react-query";
 import { forgotPassword } from "../../../services/auth";
 import { getErrorMessage } from "../../../utils/helpers";
+
+export interface IForgotPasswordFields {
+  email: string;
+}
 
 const ForgotPassword = () => {
   const { mutate, isError, isLoading, error } = useMutation({
@@ -12,13 +15,13 @@ const ForgotPassword = () => {
     // TODO: Show on success model to show that the email is sent successfully
   });
 
-  const { handleSubmit, control } = useForm<LoginFormFields>({
+  const { handleSubmit, control } = useForm<IForgotPasswordFields>({
     defaultValues: {
-      password: "",
+      email: "",
     },
   });
 
-  const onSubmit: SubmitHandler<LoginFormFields> = (data) => mutate(data);
+  const onSubmit: SubmitHandler<IForgotPasswordFields> = (data) => mutate(data);
 
   const errorMessage = getErrorMessage(error);
   return (
@@ -32,6 +35,9 @@ const ForgotPassword = () => {
             testid="login-email-input"
             placeHolder="Email"
             required={true}
+            rules={{
+              required: "Please enter the Email",
+            }}
           />
           <Typography align="center" color="red">
             {isError && errorMessage}

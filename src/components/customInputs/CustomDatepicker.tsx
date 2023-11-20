@@ -6,18 +6,13 @@ const CustomDatepicker = ({
   name,
   control,
   label,
-  required = false,
+  rules,
 }: ICustomDatepicker) => {
   return (
     <Controller
       name={name}
       control={control}
-      rules={{
-        required: {
-          value: required,
-          message: "Please select a date",
-        },
-      }}
+      rules={rules}
       render={({ field, fieldState: { error } }) => (
         <DatePicker
           {...field}

@@ -12,11 +12,7 @@ interface modelInterface {
   Component: FC<modelCompInterface>;
 }
 
-const ProjectModel: FC<modelInterface> = ({
-  showModal,
-  onClose,
-  Component,
-}: modelInterface) => {
+const ProjectModel = ({ showModal, onClose, Component }: modelInterface) => {
   if (!showModal) return null;
   return createPortal(
     <div className="project-model-container">

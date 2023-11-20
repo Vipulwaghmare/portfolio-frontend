@@ -4,7 +4,7 @@ import "./index.scss";
 import profilePic from "../../../assets/profile_pic.jpg";
 import topWave from "/wave.svg";
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   return (
     <div className="portfolio_container">
       <header>

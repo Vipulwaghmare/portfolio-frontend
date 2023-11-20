@@ -2,11 +2,17 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Grid, Typography } from "@mui/material";
 import { DevTool } from "@hookform/devtools";
 import { useNavigate } from "react-router-dom";
-import { RegisterFormFields } from "../../../interfaces/auth";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { register } from "../../../services/auth";
 import { getErrorMessage } from "../../../utils/helpers";
 import { useMutation } from "@tanstack/react-query";
+
+export interface IRegisterFormFields {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 const Register = () => {
   const navigate = useNavigate();
@@ -19,15 +25,16 @@ const Register = () => {
     onSuccess: () => navigateToLogin(),
   });
 
-  const { handleSubmit, control } = useForm<RegisterFormFields>({
+  const { handleSubmit, control, getValues } = useForm<IRegisterFormFields>({
     defaultValues: {
       name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
   });
 
-  const onSubmit: SubmitHandler<RegisterFormFields> = (data) => {
+  const onSubmit: SubmitHandler<IRegisterFormFields> = (data) => {
     mutate(data);
   };
 
@@ -43,6 +50,12 @@ const Register = () => {
             testid="login-name-input"
             placeHolder="Name"
             required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Name",
+              },
+            }}
           />
           <CustomTextField
             control={control}
@@ -51,6 +64,12 @@ const Register = () => {
             testid="login-email-input"
             placeHolder="Email"
             required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Email",
+              },
+            }}
           />
           <CustomTextField
             control={control}
@@ -59,6 +78,32 @@ const Register = () => {
             testid="login-password-input"
             placeHolder="Password"
             required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Password",
+              },
+              minLength: {
+                value: 10,
+                message: "Password must be at least 10 characters",
+              },
+            }}
+          />
+          <CustomTextField
+            control={control}
+            name={"confirmPassword"}
+            type="password"
+            testid="login-confirmPassword-input"
+            placeHolder="Confirm Password"
+            required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Password Again",
+              },
+              validate: (value) =>
+                value === getValues("password") || "Passwords must match",
+            }}
           />
           <Typography align="center" color="red">
             {isError && errorMessage}

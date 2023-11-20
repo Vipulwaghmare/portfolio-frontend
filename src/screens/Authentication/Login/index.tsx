@@ -1,12 +1,16 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, Typography, Grid } from "@mui/material";
-import { LoginFormFields } from "../../../interfaces/auth";
 import { DevTool } from "@hookform/devtools";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../../../services/auth";
 import { getErrorMessage, setTokensToLocalStorage } from "../../../utils";
+
+export interface ILoginFormFields {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,14 +22,14 @@ const Login = () => {
     },
   });
 
-  const { handleSubmit, control } = useForm<LoginFormFields>({
+  const { handleSubmit, control } = useForm<ILoginFormFields>({
     defaultValues: {
       email: "",
       password: "",
     },
   });
 
-  const onSubmit: SubmitHandler<LoginFormFields> = (data) => mutate(data);
+  const onSubmit: SubmitHandler<ILoginFormFields> = (data) => mutate(data);
 
   const errorMessage = getErrorMessage(error);
 
@@ -40,6 +44,12 @@ const Login = () => {
             testid="login-email-input"
             placeHolder="Email"
             required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Email",
+              },
+            }}
           />
           <CustomTextField
             control={control}
@@ -48,6 +58,12 @@ const Login = () => {
             testid="login-password-input"
             placeHolder="Password"
             required={true}
+            rules={{
+              required: {
+                value: true,
+                message: "Please enter the Password",
+              },
+            }}
           />
           <Typography align="center" color="red">
             {isError && errorMessage}

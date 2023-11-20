@@ -2,12 +2,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { resetPassword } from "../../../services/auth";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ResetPasswordFormFields } from "../../../interfaces/auth";
 import { Button, Grid, Typography } from "@mui/material";
 import CustomTextField from "../../../components/customInputs/CustomTextField";
 import { DevTool } from "@hookform/devtools";
 import { getErrorMessage } from "../../../utils";
 import { useState } from "react";
+
+export interface IResetPasswordFormFields {
+  password: string;
+  confirmPassword: string;
+  token: string;
+}
 
 const ResetPassword = () => {
   const [errorMsg, setErrorMsg] = useState("");
@@ -21,7 +26,7 @@ const ResetPassword = () => {
     },
   });
 
-  const { handleSubmit, control } = useForm<ResetPasswordFormFields>({
+  const { handleSubmit, control } = useForm<IResetPasswordFormFields>({
     defaultValues: {
       password: "",
       confirmPassword: "",
@@ -31,7 +36,7 @@ const ResetPassword = () => {
 
   const errorMessage = getErrorMessage(error);
 
-  const onSubmit: SubmitHandler<ResetPasswordFormFields> = (data) => {
+  const onSubmit: SubmitHandler<IResetPasswordFormFields> = (data) => {
     setErrorMsg("");
     if (data.password !== data.confirmPassword) {
       setErrorMsg("Password does not match");

@@ -10,17 +10,13 @@ const CustomTextField = ({
   placeHolder,
   required = false,
   fullWidth = true,
+  rules,
 }: ICustomTextField) => {
   return (
     <Controller
       name={name}
       control={control}
-      rules={{
-        required: {
-          value: required,
-          message: "Please enter a valid value",
-        },
-      }}
+      rules={rules}
       render={({ field, fieldState: { error } }) => (
         <TextField
           {...field}

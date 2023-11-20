@@ -1,6 +1,6 @@
 import DownloadIcon from "@mui/icons-material/Download";
 
-const AboutMe: React.FC = () => {
+const AboutMe = () => {
   return (
     <section id="about">
       <h1 className="main_title">
