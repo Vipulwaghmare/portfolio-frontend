@@ -48,6 +48,10 @@ const AboutMe = () => {
         <div className="skills">
           <h3>My Skills</h3>
           <div>
+            <div>
+              <h5>Frontend</h5>
+              <p>HTML</p>
+            </div>
             <div>HTML</div>
             <div>CSS</div>
             <div>Javascipt</div>

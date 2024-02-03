@@ -17,11 +17,6 @@ const CustomDatepicker = ({
         <DatePicker
           {...field}
           label={label}
-          // data-testid={testid}
-          // isRequired={required}
-          // fullWidth={fullWidth}
-          // error={Boolean(error)}
-          // helperText={error?.message}
           slotProps={{
             textField: {
               error: Boolean(error),

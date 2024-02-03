@@ -139,10 +139,12 @@ $headerHeight: 50px;
           gap: 20px;
           flex-wrap: wrap;
           & > div {
+            background-color: #1c1b23;
+            border-radius: 10px;
             width: 75px;
             height: 75px;
-            border-radius: 50%;
-            border: 1px solid $primaryColor;
+            // border-radius: 50%;
+            // border: 1px solid $primaryColor;
             display: flex;
             justify-content: center;
             align-items: center;
