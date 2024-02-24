@@ -19,3 +19,8 @@ export const resetPassword = async (payload: object) => {
   const { data } = await api.post('/api/v1/reset-password', payload)
   return data;
 };
+
+export const updatePassword = async (payload: object) => {
+  const { data } = await api.patch('/api/v1/update-password', payload)
+  return data;
+}

@@ -1,6 +1,7 @@
 import * as Sentry from "@sentry/react";
 
 const setupSentry = () => {
+  if (import.meta.env.MODE === "development") return;
   Sentry.init({
     dsn: import.meta.env.VITE_SENTRY_KEY,
     integrations: [

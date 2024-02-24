@@ -1,5 +1,11 @@
+import ChangePassword from "../ChangePassword";
+
 const AuthDashboard = () => {
-  return <>User Email change password update user data</>;
+  return (
+    <>
+      <ChangePassword />
+    </>
+  );
 };
 
 export default AuthDashboard;

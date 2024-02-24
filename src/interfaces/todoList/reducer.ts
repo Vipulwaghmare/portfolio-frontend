@@ -6,6 +6,7 @@ export interface TodoInterface {
   description?: string;
   createdAt: Date;
   completed: boolean;
+  // date: Date;
 }
 
 export interface TodoStateInterface {
