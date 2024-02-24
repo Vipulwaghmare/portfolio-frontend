@@ -4,12 +4,15 @@ import { TodoInterface } from "../../../interfaces/todoList/reducer";
 import { DevTool } from "@hookform/devtools";
 // import CustomDatepicker from "../../../components/customInputs/CustomDatepicker";
 import LoadingButton from "../../../components/LoadingButton";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { addTodo, updateTodo } from "../../../services/todo";
+import { useLocation } from "react-router-dom";
 
 const AddTodo = () => {
+  const todoData = useLocation().state as TodoInterface | undefined;
+  console.log({ todoData });
   const { handleSubmit, control, reset } = useForm<TodoInterface>({
-    defaultValues: {
+    defaultValues: todoData || {
       completed: false,
       createdAt: new Date(),
       description: "",
@@ -17,7 +20,6 @@ const AddTodo = () => {
       // date: new Date(),
     },
   });
-  // const queryClient = useQueryClient();
 
   const mutationAddTodo = useMutation(addTodo, {
     onSuccess: () => {
@@ -25,26 +27,21 @@ const AddTodo = () => {
       // queryClient.invalidateQueries('todos');
     },
   });
-  // const mutationUpdateTodo = useMutation(updateTodo, {
-  //   onSuccess: () => {
-  //     // queryClient.invalidateQueries('todos');
-  //   },
-  // });
-  const onSubmit: SubmitHandler<TodoInterface> = (data) => {
-    mutationAddTodo.mutate(data);
-  };
-
-  // const mutationDeleteTodo = useMutation(deleteTodo, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries('todos');
-  //   },
-  // });
+  const mutationUpdateTodo = useMutation(updateTodo, {
+    onSuccess: () => {
+      // queryClient.invalidateQueries('todos');
+    },
+  });
 
   // const mutationDeleteAllTodos = useMutation(deleteAllTodos, {
   //   onSuccess: () => {
   //     queryClient.invalidateQueries('todos');
   //   },
   // });
+  const onSubmit: SubmitHandler<TodoInterface> = (data) => {
+    if (todoData) mutationUpdateTodo.mutate(data);
+    else mutationAddTodo.mutate(data);
+  };
 
   return (
     <form

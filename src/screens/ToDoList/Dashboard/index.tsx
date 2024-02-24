@@ -1,23 +1,51 @@
 import { Button, Grid } from "@mui/material";
-// import useTodoContext from "../../../utils/todoContext/useTodoContext";
 import { useNavigate } from "react-router-dom";
+import { deleteTodo, fetchTodos } from "../../../services/todo";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { TodoInterface } from "../../../interfaces/todoList/reducer";
+import queryClient from "../../../utils/queryClient";
 
 const TodoDashboard = () => {
   const navigate = useNavigate();
-  // const { state, dispatch } = useTodoContext();
+  const { data, isLoading, isError } = useQuery<TodoInterface[]>({
+    queryKey: ["todos"],
+    queryFn: fetchTodos,
+  });
 
-  const onBackup = () => {
-    // Todo: backup the list
-  };
-  const onRecover = () => {
-    // TODO: Recover the list
-  };
+  const mutationDeleteTodo = useMutation(deleteTodo, {
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
+    },
+  });
   return (
     <Grid>
-      <Button onClick={onBackup}>Backup</Button>
-      <Button onClick={onRecover}>Recover</Button>
       <Button onClick={() => navigate("/todo/add")}>Add Todo</Button>
-      <main>dev</main>
+      <main>
+        <h3>List of Todos</h3>
+        {isLoading && <p>Loading...</p>}
+        {isError && <p>Error fetching data</p>}
+        {data && (
+          <ul>
+            {data.map((todo) => (
+              <li key={todo.id}>
+                {todo.title} {todo.description} {todo.completed}
+                <button
+                  onClick={() =>
+                    navigate(`/todo/edit/${todo.id}`, {
+                      state: todo,
+                    })
+                  }
+                >
+                  Edit
+                </button>
+                <button onClick={() => mutationDeleteTodo.mutate(todo.id)}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </main>
     </Grid>
   );
 };

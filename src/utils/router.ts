@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         Component: AddTodo,
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         Component: AddTodo,
       },
     ]
