@@ -4,26 +4,31 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ProjectModel from "../ProjectModel";
-interface modelCompInterface {
-  onClose: () => void;
-}
-interface ProjectCardInterface {
+
+export type ProjectCardInterface = {
   title: string;
   description: string;
   detailPath: string;
+  imagePath: string | null;
+  Details: () => JSX.Element;
+};
+
+// interface modelCompInterface {
+//   onClose: () => void;
+// }
+
+type TProjectCardProps = ProjectCardInterface & {
   frontendLink?: string;
   backendLink?: string;
-  imagePath: string;
-}
-
-interface testInterface extends modelCompInterface {}
-const Test = ({ onClose }: testInterface) => {
-  return (
-    <h1>
-      <button onClick={onClose}>Close</button>
-    </h1>
-  );
 };
+// interface testInterface extends modelCompInterface {}
+// const Test = ({ onClose }: testInterface) => {
+//   return (
+//     <h1>
+//       <button onClick={onClose}>Close</button>
+//     </h1>
+//   );
+// };
 
 const ProjectCard = ({
   title,
@@ -32,14 +37,17 @@ const ProjectCard = ({
   frontendLink,
   backendLink,
   imagePath,
-}: ProjectCardInterface) => {
+  Details,
+}: TProjectCardProps) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   return (
     <div className="project-card">
-      <div className="img-container">
-        <img alt={title} height="140" src={imagePath} />
-      </div>
+      {imagePath && (
+        <div className="img-container">
+          <img alt={title} height="140" src={imagePath} />
+        </div>
+      )}
       <div className="details">
         <div>
           <p className="title">{title}</p>
@@ -66,7 +74,7 @@ const ProjectCard = ({
             <ProjectModel
               showModal={open}
               onClose={() => setOpen(false)}
-              Component={Test}
+              Component={Details}
             />
           )}
         </div>

@@ -124,7 +124,9 @@ const Register = () => {
           >
             Already a member? Login
           </Button>
-          <DevTool control={control} />
+          {process.env.NODE_ENV === "development" && (
+            <DevTool control={control} />
+          )}
         </Grid>
       </form>
     </Grid>

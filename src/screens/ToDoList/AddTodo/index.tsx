@@ -7,6 +7,7 @@ import LoadingButton from "../../../components/LoadingButton";
 import { useMutation } from "@tanstack/react-query";
 import { addTodo, updateTodo } from "../../../services/todo";
 import { useLocation } from "react-router-dom";
+import queryClient from "../../../utils/queryClient";
 
 const AddTodo = () => {
   const todoData = useLocation().state as TodoInterface | undefined;
@@ -24,20 +25,15 @@ const AddTodo = () => {
   const mutationAddTodo = useMutation(addTodo, {
     onSuccess: () => {
       reset();
-      // queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
   });
   const mutationUpdateTodo = useMutation(updateTodo, {
     onSuccess: () => {
-      // queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries({ queryKey: ["todos"] });
     },
   });
 
-  // const mutationDeleteAllTodos = useMutation(deleteAllTodos, {
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries('todos');
-  //   },
-  // });
   const onSubmit: SubmitHandler<TodoInterface> = (data) => {
     if (todoData) mutationUpdateTodo.mutate(data);
     else mutationAddTodo.mutate(data);
@@ -63,7 +59,7 @@ const AddTodo = () => {
       />
       {/* <CustomDatepicker control={control} name="date" required={true} /> */}
       <LoadingButton buttonText="Add Todo" loading={false} />
-      <DevTool control={control} />
+      {process.env.NODE_ENV === "development" && <DevTool control={control} />}
     </form>
   );
 };

@@ -10,7 +10,7 @@ const AboutMe = () => {
       <div className="main_data">
         <div className="data">
           <div>
-            <p>Personal Info</p>
+            <h3>Personal Info</h3>
             <div>
               <div>
                 <p>
@@ -44,26 +44,28 @@ const AboutMe = () => {
               <DownloadIcon />
             </div>
           </button>
+          <div>
+            <h3>Experience</h3>
+            <p>iConnect Info Solutions (Oct 2020 - Current)</p>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <p>B.E. Mechanical (Mumbai University) (2015 - 2019)</p>
+          </div>
         </div>
         <div className="skills">
           <h3>My Skills</h3>
           <div>
-            <div>
-              <h5>Frontend</h5>
-              <p>HTML</p>
-            </div>
             <div>HTML</div>
             <div>CSS</div>
-            <div>Javascipt</div>
+            <div>JavaScipt</div>
+            <div>TypeScript</div>
             <div>React</div>
             <div>NodeJs</div>
+            <div>Express</div>
             <div>Flask</div>
           </div>
         </div>
-      </div>
-      <div>
-        <h3>Experience & Education</h3>
-        <p>Iconnect (Oct 2020 - Current)</p>
       </div>
     </section>
   );

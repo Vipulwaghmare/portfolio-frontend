@@ -99,6 +99,19 @@ $headerHeight: 50px;
     gap: 50px;
     align-items: center;
     margin: 0 auto;
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+    img {
+      width: 500px;
+      height: 500px;
+      transition: width 0.5s, height 0.5s;
+      @media (max-width: 800px) {
+        width: 250px;
+        height: 250px;
+        transition: width 0.5s, height 0.5s;
+      }
+    }
     & > div {
       z-index: 2;
     }
@@ -107,10 +120,16 @@ $headerHeight: 50px;
         color: $primaryColor;
         font-size: 40px;
         text-transform: uppercase;
+        transition: font-size 0.5s;
+        @media (max-width: 800px) {
+          font-size: 24px;
+          transition: font-size 0.5s;
+        }
       }
     }
   }
   #about {
+    padding: 16px;
     max-width: $maxWidth;
     margin: 0 auto;
     .main_data {
@@ -125,12 +144,15 @@ $headerHeight: 50px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-height: 350px;
       }
       .skills {
         h3 {
           text-align: center;
           text-transform: capitalize;
           font-size: 30px;
+          margin-top: 16px;
+          margin-bottom: 16px;
         }
         & > div {
           // position: relative;
@@ -141,8 +163,8 @@ $headerHeight: 50px;
           & > div {
             background-color: #1c1b23;
             border-radius: 10px;
-            width: 75px;
-            height: 75px;
+            width: 80px;
+            height: 80px;
             // border-radius: 50%;
             // border: 1px solid $primaryColor;
             display: flex;
@@ -246,6 +268,15 @@ $headerHeight: 50px;
         }
         textarea {
           min-height: 120px;
+        }
+        p {
+          text-align: center;
+        }
+        .success {
+          color: green;
+        }
+        .error {
+          color: red;
         }
       }
     }

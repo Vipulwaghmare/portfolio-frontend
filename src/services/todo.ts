@@ -16,11 +16,11 @@ export const updateTodo = async (updatedTodo: Partial<TodoInterface>) => {
   return data;
 };
 
+export const deleteAllTodos = async () => {
+  await api.delete('/api/v1/todo/all');
+};
+
 export const deleteTodo = async (id: string) => {
   await api.delete(`/api/v1/todo/${id}`);
   return id;
-};
-
-export const deleteAllTodos = async () => {
-  await api.delete('/api/v1/todo');
 };

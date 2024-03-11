@@ -1,6 +1,10 @@
-import ProjectCard from "../../../components/ProjectCard";
-import { ProjectCardInterface } from "../../../interfaces/projects/card";
+import ProjectCard, {
+  ProjectCardInterface,
+} from "../../../components/ProjectCard";
+// import { ProjectCardInterface } from "../../../interfaces/projects/card";
 import "./index.scss";
+import AuthBaseImage from "../../../assets/Auth_base.PNG?url";
+import AuthDetails from "../../Authentication/Details";
 
 const projectData: ProjectCardInterface[] = [
   // {
@@ -15,27 +19,28 @@ const projectData: ProjectCardInterface[] = [
     description:
       "User Authentication with React, React Query, React Hook Form, Express, JWT token",
     detailPath: "/auth/login",
-    imagePath: "",
+    imagePath: AuthBaseImage,
+    Details: AuthDetails,
   },
-  {
-    title: "Todo App",
-    description: "Todo app with frontedn pagination, filtering, sorting",
-    detailPath: "/todo",
-    imagePath: "",
-  },
-  {
-    title: "Ecommerce",
-    description:
-      "Ecommerce with Redux toolkit, RTK Query, Backend pagination, Infinity Scrolling",
-    detailPath: "/shopping",
-    imagePath: "",
-  },
-  {
-    title: "Social",
-    description: "Chat application with firebase",
-    detailPath: "/social/login",
-    imagePath: "",
-  },
+  // {
+  //   title: "Todo App",
+  //   description: "Todo app with frontedn pagination, filtering, sorting",
+  //   detailPath: "/todo",
+  //   imagePath: null,
+  // },
+  // {
+  //   title: "Ecommerce",
+  //   description:
+  //     "Ecommerce with Redux toolkit, RTK Query, Backend pagination, Infinity Scrolling",
+  //   detailPath: "/shopping",
+  //   imagePath: "",
+  // },
+  // {
+  //   title: "Social",
+  //   description: "Chat application with firebase",
+  //   detailPath: "/social/login",
+  //   imagePath: "",
+  // },
 ];
 
 const Projects = () => {

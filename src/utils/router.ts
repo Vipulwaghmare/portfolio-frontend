@@ -17,6 +17,7 @@ import SocialSignup from "../screens/Social/Authentication/Signup";
 import ResetPassword from "../screens/Authentication/ResetPassword";
 import AuthLayout from "../screens/Authentication";
 import AuthDashboard from "../screens/Authentication/Dashboard";
+import SocialDashboard from "../screens/Social/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -102,7 +103,10 @@ const router = createBrowserRouter([
         path: 'signup',
         Component: SocialSignup
       },
-      // firebase , chat, 
+      {
+        path: 'dashboard',
+        Component: SocialDashboard,
+      }
     ]
   }
 ])

@@ -19,7 +19,7 @@ const Dashboard = () => {
         <img src={topWave} className="wave" />
         <section id="landing">
           <div>
-            <img src={profilePic} width={500} height={500} />
+            <img src={profilePic} />
           </div>
           <div className="info">
             <h1>

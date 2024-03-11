@@ -1,7 +1,9 @@
+import { useState } from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import SendIcon from "@mui/icons-material/Send";
+import { sendContactMeEmail } from "../../../../services/otherApi";
 
 const socialData = [
   {
@@ -19,10 +21,10 @@ const socialData = [
 ];
 
 const personalData = [
-  {
-    label: "Address",
-    value: "Navi Mumbai, India",
-  },
+  // {
+  //   label: "Address",
+  //   value: "Navi Mumbai, India",
+  // },
   {
     label: "Email",
     value: "vipulwaghmare222@gmail.com",
@@ -30,6 +32,26 @@ const personalData = [
 ];
 
 const ContactMe = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [subject, setSubject] = useState("");
+  const [error, setError] = useState<string | undefined>();
+  const [success, setSuccess] = useState<string | undefined>();
+
+  const onSendMessage = async () => {
+    try {
+      await sendContactMeEmail({
+        username,
+        email,
+        message,
+        subject,
+      });
+      setSuccess("Message sent successfully");
+    } catch (e) {
+      setError("Error while sending message. Please try again later");
+    }
+  };
   return (
     <section id="contact-me">
       <h1 className="main_title">
@@ -62,12 +84,30 @@ const ContactMe = () => {
         </div>
         <form>
           <div className="user_data">
-            <input placeholder="Your Name"></input>
-            <input placeholder="Your Email"></input>
+            <input
+              placeholder="Your Name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            ></input>
+            <input
+              placeholder="Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
           </div>
-          <input placeholder="Subject"></input>
-          <textarea placeholder="Write your message here..."></textarea>
-          <button className="primary_button">
+          <input
+            placeholder="Subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+          ></input>
+          <textarea
+            placeholder="Write your message here..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          ></textarea>
+          <p className="success">{success}</p>
+          <p className="error">{error}</p>
+          <button className="primary_button" onClick={onSendMessage}>
             Send Message
             <div>
               <SendIcon />
