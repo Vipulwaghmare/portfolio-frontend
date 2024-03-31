@@ -5,6 +5,7 @@ import ProjectCard, {
 import "./index.scss";
 import AuthBaseImage from "../../../assets/Auth_base.PNG?url";
 import AuthDetails from "../../Authentication/Details";
+import SortDetails from "../../Sorting/Details";
 
 const projectData: ProjectCardInterface[] = [
   // {
@@ -41,6 +42,13 @@ const projectData: ProjectCardInterface[] = [
   //   detailPath: "/social/login",
   //   imagePath: "",
   // },
+  {
+    title: "Sorting Visualizer",
+    description: "Visualize sorting algorithms",
+    detailPath: "/sorting-algorithms",
+    imagePath: "",
+    Details: SortDetails,
+  },
 ];
 
 const Projects = () => {

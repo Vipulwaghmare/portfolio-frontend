@@ -1,0 +1,17 @@
+.auth_project_details {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 600px;
+  h1 {
+    text-align: center;
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+}

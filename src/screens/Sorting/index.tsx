@@ -1,6 +1,5 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-// import Chart from "./Chart";
 import "./index.scss";
 import SelectionSort from "./SelectionSort";
 import BubbleSort from "./BubbleSort";

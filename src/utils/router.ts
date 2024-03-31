@@ -56,7 +56,7 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/sorting-algorithm",
+    path: "/sorting-algorithms",
     Component: Sorting,
   },
   {
