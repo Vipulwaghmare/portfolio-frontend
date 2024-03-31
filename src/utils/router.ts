@@ -18,6 +18,7 @@ import ResetPassword from "../screens/Authentication/ResetPassword";
 import AuthLayout from "../screens/Authentication";
 import AuthDashboard from "../screens/Authentication/Dashboard";
 import SocialDashboard from "../screens/Social/Dashboard";
+import Sorting from "../screens/Sorting";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         Component: AuthDashboard,
       },
     ]
+  },
+  {
+    path: "/sorting-algorithm",
+    Component: Sorting,
   },
   {
     path: "/todo",
