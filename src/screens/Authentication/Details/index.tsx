@@ -5,10 +5,29 @@ const AuthDetails = () => {
     <div className="auth_project_details" onClick={(e) => e.stopPropagation()}>
       <h1>Authentication</h1>
       <p>
-        This project implements user authentication using React, React Query,
-        React Hook Form, Express, and JWT token. It covers all the basic
-        authentication use-cases like registering a new user, logging in,
-        logging out, updating user details, and changing password.
+        <p>
+          <strong>Stack: </strong> React Query, React Hook Form, Express, JWT
+          Token, MongoDB, Nodemailer
+        </p>
+        <p>
+          <strong>Features Include:</strong>
+          <ul style={{ listStyle: "none" }}>
+            <li>
+              <em>Sign Up</em>: Register using Email and password
+            </li>
+            <li>
+              <em>Sign In</em>: Login user with Email and password
+            </li>
+            <li>
+              <em>Forgot Password</em>: Send Email to user to reset password and
+              use the link from email to change user password
+            </li>
+            <li>
+              <em>Update Password</em>: User can update password with using
+              their old password
+            </li>
+          </ul>
+        </p>
       </p>
       <div className="links">
         <a

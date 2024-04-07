@@ -5,14 +5,27 @@ const SortDetails = () => {
     <div className="auth_project_details" onClick={(e) => e.stopPropagation()}>
       <h1>Sorting Algorithms</h1>
       <p>
-        This project implements sorting algorithms such as Bubble Sort,
-        Insertion Sort, Selection Sort. It helps in visualizing the sorting
-        process.
+        <p>
+          <strong>Stack: </strong> React Hooks
+        </p>
+        <p>
+          <strong>Available Algorithms:</strong>
+          <ul style={{ listStyle: "none" }}>
+            <li>
+              <em>Bubble Sort</em>
+            </li>
+            <li>
+              <em>Selection Sort</em>
+            </li>
+            <li>
+              <em>Insertion Sort</em>
+            </li>
+          </ul>
+        </p>
       </p>
-      <p>The project helped in deeper understanding of how React hooks works</p>
       <div className="links">
         <a
-          href="https://github.com/Vipulwaghmare/portfolio-frontend/tree/master/src/screens/Authentication"
+          href="https://github.com/Vipulwaghmare/portfolio-frontend/tree/master/src/screens/Sorting"
           target="_blank"
         >
           Fronted Code
