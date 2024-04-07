@@ -4,6 +4,7 @@ import ProjectCard, {
 // import { ProjectCardInterface } from "../../../interfaces/projects/card";
 import "./index.scss";
 import AuthBaseImage from "../../../assets/Auth_base.PNG?url";
+import SortingImage from "../../../assets/Sorting_page.png";
 import AuthDetails from "../../Authentication/Details";
 import SortDetails from "../../Sorting/Details";
 
@@ -46,7 +47,7 @@ const projectData: ProjectCardInterface[] = [
     title: "Sorting Visualizer",
     description: "Visualize sorting algorithms",
     detailPath: "/sorting-algorithms",
-    imagePath: "",
+    imagePath: SortingImage,
     Details: SortDetails,
   },
 ];

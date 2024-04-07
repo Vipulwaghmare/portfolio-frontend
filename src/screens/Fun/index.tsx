@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 // import "./index.scss";
 
 export default function AddList() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<number[]>([]);
 
   const onClick = () => {
     list.push(1);
