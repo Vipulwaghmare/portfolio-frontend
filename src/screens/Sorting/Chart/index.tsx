@@ -14,12 +14,13 @@ export default function Chart({
 }) {
   return (
     <Grid container padding={1}>
-      <Grid item xs={12} container alignItems="center" gap={1}>
-        <Typography variant="h5">{algorithmName}</Typography>
-        <div>{JSON.stringify(data)}</div>
+      <Grid xs={12} alignItems="center">
+        <Typography variant="h5" textAlign="center">
+          {algorithmName}
+        </Typography>
       </Grid>
-      <Grid item xs={12} container>
-        <Grid item xs={4}>
+      <Grid item xs={12} container alignItems="flex-start" gap={2}>
+        <Grid item xs={12} marginTop={2} justifyContent={"center"}>
           <div className="chart-container">
             {data.map((i, index) => (
               <div
@@ -28,6 +29,7 @@ export default function Chart({
                 style={{
                   height: `${i * 2}px`,
                 }}
+                data-number={i}
               ></div>
             ))}
             {tempElement === undefined ? null : (
@@ -36,11 +38,12 @@ export default function Chart({
                 style={{
                   height: `${tempElement * 2}px`,
                 }}
+                data-number={tempElement}
               ></div>
             )}
           </div>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12}>
           <CodeBlock
             text={code}
             language="javascript"

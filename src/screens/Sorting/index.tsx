@@ -1,7 +1,7 @@
 import {
   Button,
   ButtonGroup,
-  Slider,
+  Grid,
   TextField,
   Typography,
 } from "@mui/material";
@@ -50,44 +50,52 @@ const getAlgoComponent = (
 };
 
 export default function Sorting() {
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState<number | "">("");
   const [error, setError] = useState("");
   const [current, setCurrent] = useState<AlgoNames | null>(null);
   const [array, setArray] = useState<number[]>([
-    55, 88, 97, 56, 48, 32, 22, 11, 2,
+    100, 90, 80, 70, 60, 50, 40, 30, 20, 10,
   ]);
-  const [delay, setDelay] = useState(1000);
+  const [delay] = useState(1000);
 
   return (
-    <div>
-      <form>
+    <Grid padding={2}>
+      <form className="sort-input-form">
         <TextField
           value={number}
           type="number"
-          inputProps={{
-            type: "number",
-            min: 0,
-            max: 100,
+          label="Enter a number between 0 to 100"
+          onChange={(e) => {
+            const number = Number(e.target.value);
+            if (number >= 0 && number <= 100) {
+              setNumber(number);
+            }
           }}
-          onChange={(e) => setNumber(Number(e.target.value))}
+          style={{
+            width: 300,
+          }}
         />
         <Button
           onClick={(e) => {
             e.preventDefault();
             setCurrent(null);
             if (array.length <= 10) {
-              setArray([...array, number]);
-              setNumber(0);
+              if (number !== "") {
+                setArray([...array, number]);
+                setNumber("");
+              }
               setError("");
             } else {
               setError("You can only add 10 elements");
             }
           }}
           type="submit"
+          variant="outlined"
         >
           Add
         </Button>
         <Button
+          variant="outlined"
           onClick={() => {
             setArray([]);
             setCurrent(null);
@@ -97,34 +105,28 @@ export default function Sorting() {
           Clear
         </Button>
       </form>
-      <Slider
-        // aria-label="Delay"
-        // defaultValue={1000}
-        // valueLabelDisplay="auto"
-        // shiftStep={30}
-        step={10}
-        // marks
-        min={100}
-        max={1000}
-        value={delay}
-        onChange={(_, v) => setDelay(v as number)}
-      />
-      <Typography variant="h6" color="red">
+      <Typography variant="h6" color="red" textAlign={"center"}>
         {error}
       </Typography>
-      <div>{JSON.stringify(array)}</div>
-      <ButtonGroup>
-        {algoList.map(({ name, value }) => (
-          <Button
-            key={value}
-            onClick={() => setCurrent(value)}
-            variant={current === value ? "contained" : "outlined"}
-          >
-            {name}
-          </Button>
+      <div className="sort-numbers-list">
+        {array.map((num, index) => (
+          <div key={index}>{num}</div>
         ))}
-      </ButtonGroup>
+      </div>
+      <Grid container justifyContent="center">
+        <ButtonGroup>
+          {algoList.map(({ name, value }) => (
+            <Button
+              key={value}
+              onClick={() => setCurrent(value)}
+              variant={current === value ? "contained" : "outlined"}
+            >
+              {name}
+            </Button>
+          ))}
+        </ButtonGroup>
+      </Grid>
       {getAlgoComponent(current, array, delay)}
-    </div>
+    </Grid>
   );
 }

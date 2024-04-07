@@ -1,16 +1,43 @@
 .chart-container {
   display: flex;
+  justify-content: center;
   gap: 10px;
   align-items: flex-end;
   width: 100%;
   height: 100%;
-  .chart,
-  .tempElement {
-    width: 4%;
+  .chart {
+    width: 20px;
     background-color: #401f71;
+    &:after {
+      content: attr(data-number);
+      font-size: 14px;
+      position: relative;
+      top: -24px;
+    }
   }
   .tempElement {
     background-color: green;
     margin-left: 24px;
+  }
+}
+.sort-input-form {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+.sort-numbers-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto;
+  & > div {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #401f71;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
