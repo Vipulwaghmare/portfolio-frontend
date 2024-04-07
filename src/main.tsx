@@ -23,7 +23,7 @@ const darkTheme = createTheme({
 setupSentry();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <>
     <ErrorBoundary>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <QueryClientProvider client={queryClient}>
@@ -35,5 +35,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </QueryClientProvider>
       </LocalizationProvider>
     </ErrorBoundary>
-  </React.StrictMode>,
+  </>,
 );

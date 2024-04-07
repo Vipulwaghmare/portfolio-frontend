@@ -1,6 +1,21 @@
-import { Button } from "@mui/material";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { wait } from "../../../utils";
+import Chart from "../Chart";
+
+const code = `const insertionSort = (array) => {  
+  for (let i = 1; i < array.length; i++) {  
+      let currentElement = array[i];  
+      let j = i - 1;
+      while (j >= 0 && array[j] > currentElement) {  
+          array[j + 1] = array[j];  
+          j = j - 1;  
+      }  
+      array[j + 1] = currentElement;  
+  } 
+  return array;
+}  
+
+console.log(insertionSort([9,3,2,2,1]))`;
 
 export default function InsertionSort({
   data,
@@ -9,44 +24,56 @@ export default function InsertionSort({
   data: number[];
   delay?: number;
 }) {
-  const [localData, setLocalData] = useState(data);
+  const [localData, setLocalData] = useState([...data]);
   const dataRef = useRef(localData);
+  const stopRef = useRef(false);
+  const delayRef = useRef(delay);
+  const [tempElement, setTempElement] = useState<number | undefined>();
 
-  const onSort = async () => {
-    setLocalData(data);
-    dataRef.current = data;
-    const currentData = dataRef.current;
-    for (let i = 0; i < currentData.length; i++) {
-      const currentElement = currentData[i];
-      let prevIndex = i - 1;
-      while (prevIndex >= 0 && currentData[prevIndex] > currentElement) {
-        currentData[prevIndex + 1] = currentData[prevIndex];
-        prevIndex = prevIndex - 1;
-        await wait(delay);
+  useEffect(() => {
+    return () => {
+      stopRef.current = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    delayRef.current = delay;
+  }, [delay]);
+
+  useEffect(() => {
+    const start = async () => {
+      setLocalData(data);
+      dataRef.current = [...data];
+      const currentData = dataRef.current;
+      for (let i = 0; i < currentData.length; i++) {
+        const currentElement = currentData[i];
+        setTempElement(currentElement);
+        let prevIndex = i - 1;
+        while (prevIndex >= 0 && currentData[prevIndex] > currentElement) {
+          currentData[prevIndex + 1] = currentData[prevIndex];
+          prevIndex = prevIndex - 1;
+          if (stopRef.current) break;
+          await wait(delayRef.current);
+          dataRef.current = [...currentData];
+          setLocalData([...currentData]);
+        }
+        currentData[prevIndex + 1] = currentElement;
+        if (stopRef.current) break;
+        await wait(delayRef.current);
+        setTempElement(undefined);
         dataRef.current = [...currentData];
         setLocalData([...currentData]);
+        await wait(delayRef.current);
       }
-      currentData[prevIndex + 1] = currentElement;
-      await wait(delay);
-      dataRef.current = [...currentData];
-      setLocalData([...currentData]);
-    }
-  };
+    };
+    start();
+  }, [data]);
   return (
-    <>
-      <Button onClick={onSort}>Sort</Button>
-      <div>{JSON.stringify(localData)}</div>
-      <div className="chart-container">
-        {localData.map((i, index) => (
-          <div
-            className="chart"
-            key={index}
-            style={{
-              height: `${i * 5}px`,
-            }}
-          ></div>
-        ))}
-      </div>
-    </>
+    <Chart
+      algorithmName="Insertion Sort"
+      code={code}
+      data={localData}
+      tempElement={tempElement}
+    />
   );
 }
