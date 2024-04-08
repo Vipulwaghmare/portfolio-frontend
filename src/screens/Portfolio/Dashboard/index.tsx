@@ -1,7 +1,7 @@
 import ContactMe from "./ContactMe";
 import AboutMe from "./About";
 import "./index.scss";
-import profilePic from "../../../assets/profile_pic.jpg";
+// import profilePic from "../../../assets/profile_pic.jpg";
 import topWave from "/wave.svg";
 
 const Dashboard = () => {
@@ -19,7 +19,7 @@ const Dashboard = () => {
         <img src={topWave} className="wave" />
         <section id="landing">
           <div>
-            <img src={profilePic} />
+            <img src={"../../../assets/profile_pic.jpg"} />
           </div>
           <div className="info">
             <h1>
