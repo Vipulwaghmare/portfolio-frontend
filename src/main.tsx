@@ -12,6 +12,8 @@ import router from "./utils/router";
 import queryClient from "./utils/queryClient";
 import ErrorBoundary from "./components/ErrorBoundary";
 import setupSentry from "./config/sentry";
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
 
 const darkTheme = createTheme({
   palette: {
@@ -22,7 +24,7 @@ const darkTheme = createTheme({
 setupSentry();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <>
+  <Suspense fallback={<LinearProgress />}>
     <ErrorBoundary>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <QueryClientProvider client={queryClient}>
@@ -34,5 +36,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </QueryClientProvider>
       </LocalizationProvider>
     </ErrorBoundary>
-  </>,
+  </Suspense>,
 );

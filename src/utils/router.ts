@@ -1,124 +1,102 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../screens/Authentication/Login";
-import Register from "../screens/Authentication/Register";
-import Dashboard from "../screens/Portfolio/Dashboard";
-import ForgotPassword from "../screens/Authentication/ForgotPassword";
-import Projects from "../screens/Portfolio/Projects";
-import EcommerceBase from "../screens/ECommerce";
-import EcommerceDashboard from "../screens/ECommerce/Dashboard";
-import EcommerceCart from "../screens/ECommerce/Cart";
-import ProductDetails from "../screens/ECommerce/ProductDetails";
-import TodoBase from "../screens/ToDoList";
-import AddTodo from "../screens/ToDoList/AddTodo";
-import TodoDashboard from "../screens/ToDoList/Dashboard";
-import Social from "../screens/Social";
-import SocialLogin from "../screens/Social/Authentication/Login";
-import SocialSignup from "../screens/Social/Authentication/Signup";
-import ResetPassword from "../screens/Authentication/ResetPassword";
-import AuthLayout from "../screens/Authentication";
-import AuthDashboard from "../screens/Authentication/Dashboard";
-import SocialDashboard from "../screens/Social/Dashboard";
-import Sorting from "../screens/Sorting";
-import Fun from "../screens/Fun";
 
 const router = createBrowserRouter([
   {
     path: "",
-    Component: Dashboard,
+    Component: lazy(() => import('../screens/Portfolio/Dashboard')),
   },
   {
     path: "/projects",
-    Component: Projects,
+    Component: lazy(() => import('../screens/Portfolio/Projects')),
   },
   {
     path: "/test",
-    Component: Fun,
+    Component: lazy(() => import('../screens/Fun')),
   },
   {
     path: "/auth",
-    Component: AuthLayout,
+    Component: lazy(() => import('../screens/Authentication')),
     children: [
       {
         path: 'login',
-        Component: Login,
+        Component: lazy(() => import('../screens/Authentication/Login')),
       },
       {
         path: 'register',
-        Component: Register
+        Component: lazy(() => import('../screens/Authentication/Register'))
       },
       {
         path: 'forgot-password',
-        Component: ForgotPassword,
+        Component: lazy(() => import('../screens/Authentication/ForgotPassword')),
       },
       {
         path: 'reset-password/:token',
-        Component: ResetPassword,
+        Component: lazy(() => import('../screens/Authentication/ResetPassword')),
       },
       {
         path: 'dashboard',
-        Component: AuthDashboard,
+        Component: lazy(() => import('../screens/Authentication/Dashboard')),
       },
     ]
   },
   {
     path: "/sorting-algorithms",
-    Component: Sorting,
+    Component: lazy(() => import('../screens/Sorting')),
   },
   {
     path: "/todo",
-    Component: TodoBase,
+    Component: lazy(() => import('../screens/ToDoList')),
     children: [
       {
         path: '',
-        Component: TodoDashboard,
+        Component: lazy(() => import('../screens/ToDoList/Dashboard')),
       },
       {
         path: 'add',
-        Component: AddTodo,
+        Component: lazy(() => import('../screens/ToDoList/AddTodo')),
       },
       {
         path: 'edit/:id',
-        Component: AddTodo,
+        Component: lazy(() => import('../screens/ToDoList/AddTodo')),
       },
     ]
   },
   {
     path: "/shopping",
-    Component: EcommerceBase,
+    Component: lazy(() => import('../screens/ECommerce')),
     children: [
       {
         path: '',
-        Component: EcommerceDashboard,
+        Component: lazy(() => import('../screens/ECommerce/Dashboard')),
       },
       {
         path: 'cart',
-        Component: EcommerceCart,
+        Component: lazy(() => import('../screens/ECommerce/Cart')),
       },
       {
         path: 'product',
-        Component: ProductDetails,
+        Component: lazy(() => import('../screens/ECommerce/ProductDetails')),
       },
     ]
   },
   {
     path: "/social",
-    Component: Social,
+    Component: lazy(() => import('../screens/Social')),
     children: [
-
       {
         path: 'login',
-        Component: SocialLogin,
+        Component: lazy(() => import('../screens/Social/Authentication/Login')),
       },
       {
         path: 'signup',
-        Component: SocialSignup
+        Component: lazy(() => import('../screens/Social/Authentication/Signup'))
       },
       {
         path: 'dashboard',
-        Component: SocialDashboard,
+        Component: lazy(() => import('../screens/Social/Dashboard')),
       }
     ]
   }
 ])
-
 export default router;
