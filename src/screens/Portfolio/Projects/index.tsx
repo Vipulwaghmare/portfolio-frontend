@@ -3,8 +3,6 @@ import ProjectCard, {
 } from "../../../components/ProjectCard";
 // import { ProjectCardInterface } from "../../../interfaces/projects/card";
 import "./index.scss";
-import AuthBaseImage from "../../../assets/Auth_base.PNG?url";
-import SortingImage from "../../../assets/Sorting_page.png";
 import AuthDetails from "../../Authentication/Details";
 import SortDetails from "../../Sorting/Details";
 
@@ -21,7 +19,7 @@ const projectData: ProjectCardInterface[] = [
     description:
       "User Authentication with React, React Query, React Hook Form, Express, JWT token",
     detailPath: "/auth/login",
-    imagePath: AuthBaseImage,
+    imagePath: "/auth_base.png",
     Details: AuthDetails,
   },
   // {
@@ -47,7 +45,7 @@ const projectData: ProjectCardInterface[] = [
     title: "Sorting Visualizer",
     description: "Visualize sorting algorithms",
     detailPath: "/sorting-algorithms",
-    imagePath: SortingImage,
+    imagePath: "/sorting_page.png",
     Details: SortDetails,
   },
 ];
