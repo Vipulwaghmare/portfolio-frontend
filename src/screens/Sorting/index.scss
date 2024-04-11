@@ -15,6 +15,15 @@
       top: -24px;
     }
   }
+  .selected {
+    background-color: green;
+  }
+  .highlight {
+    background-color: red;
+  }
+  .done {
+    background-color: pink;
+  }
   .tempElement {
     background-color: green;
     margin-left: 24px;

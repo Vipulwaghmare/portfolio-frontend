@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { wait } from "../../../utils";
-import Chart from "../Chart";
+import ChartLayout from "../Layout";
 
 const code = `const insertionSort = (array) => {  
   for (let i = 1; i < array.length; i++) {  
@@ -69,11 +69,28 @@ export default function InsertionSort({
     start();
   }, [data]);
   return (
-    <Chart
-      algorithmName="Insertion Sort"
-      code={code}
-      data={localData}
-      tempElement={tempElement}
-    />
+    <ChartLayout algorithmName="Insertion Sort" code={code}>
+      <div className="chart-container">
+        {localData.map((i, index) => (
+          <div
+            className="chart"
+            key={index}
+            style={{
+              height: `${i * 2}px`,
+            }}
+            data-number={i}
+          ></div>
+        ))}
+        {tempElement === undefined ? null : (
+          <div
+            className="chart tempElement"
+            style={{
+              height: `${tempElement * 2}px`,
+            }}
+            data-number={tempElement}
+          ></div>
+        )}
+      </div>
+    </ChartLayout>
   );
 }

@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 import { swapElementsInArray, wait } from "../../../utils";
-import Chart from "../Chart";
+import ChartLayout from "../Layout";
 
 const code = `const swap = (array, firstIndex, secondIndex) => {
   const temp = array[firstIndex];
@@ -28,10 +28,19 @@ export default function BubbleSort({
   data: number[];
   delay?: number;
 }) {
-  const [localData, setLocalData] = useState([...data]);
+  const randomId = useId();
+  const [localData, setLocalData] = useState<
+    {
+      id: string;
+      number: number;
+    }[]
+  >([]);
   const dataRef = useRef(localData);
   const stopRef = useRef(false);
   const delayRef = useRef(delay);
+  const [selected, setSelected] = useState<Set<string>>(new Set([]));
+  const [maxId, setMaxId] = useState("");
+  const [done, setDone] = useState<Set<string>>(new Set([]));
 
   useEffect(() => {
     return () => {
@@ -45,29 +54,63 @@ export default function BubbleSort({
 
   useEffect(() => {
     const start = async () => {
-      setLocalData(data);
-      dataRef.current = [...data];
+      const newData = data.map((number, i) => ({ id: randomId + i, number }));
+      setLocalData(newData);
+      dataRef.current = [...newData];
       const currentData = dataRef.current;
       for (let i = 0; i < currentData.length; i++) {
         if (stopRef.current) break;
         for (let j = 0; j < currentData.length - i - 1; j++) {
-          if (currentData[j] > currentData[j + 1]) {
+          setSelected(new Set([currentData[j].id, currentData[j + 1].id]));
+          await wait(delayRef.current / 2);
+          setMaxId(
+            currentData[j].number > currentData[j + 1].number
+              ? currentData[j].id
+              : currentData[j + 1].id,
+          );
+          await wait(delayRef.current / 2);
+          if (currentData[j].number > currentData[j + 1].number) {
             const swappedArray = swapElementsInArray(
               currentData,
               j,
               j + 1,
               true,
             );
-            console.log(swappedArray);
             if (stopRef.current) break;
             await wait(delayRef.current);
             dataRef.current = swappedArray;
             setLocalData(swappedArray);
+            setSelected(new Set([]));
+            setMaxId("");
+            await wait(delayRef.current / 2);
           }
         }
+        setDone(
+          (prev) =>
+            new Set([...prev, currentData[currentData.length - i - 1].id]),
+        );
       }
     };
     start();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
-  return <Chart algorithmName="Bubble Sort" code={code} data={localData} />;
+
+  return (
+    <ChartLayout algorithmName="Bubble Sort" code={code}>
+      <div className="chart-container">
+        {localData.map(({ number, id }) => (
+          <div
+            className={`chart ${selected.has(id) ? "selected" : ""} ${
+              maxId === id ? "highlight" : ""
+            } ${done.has(id) ? "done" : ""} `}
+            key={id}
+            style={{
+              height: `${number * 2}px`,
+            }}
+            data-number={number}
+          ></div>
+        ))}
+      </div>
+    </ChartLayout>
+  );
 }

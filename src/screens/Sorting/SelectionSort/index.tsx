@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { swapElementsInArray, wait } from "../../../utils";
-import Chart from "../Chart";
+import ChartLayout from "../Layout";
 
 const code = `const swap = (array, firstIndex, secondIndex) => {
   const temp = array[firstIndex];
@@ -29,10 +29,20 @@ export default function SelectionSort({
   data: number[];
   delay?: number;
 }) {
-  const [localData, setLocalData] = useState([...data]);
+  const randomId = useId();
+  const [localData, setLocalData] = useState<
+    {
+      id: string;
+      number: number;
+    }[]
+  >([]);
   const dataRef = useRef(localData);
   const stopRef = useRef(false);
   const delayRef = useRef(delay);
+  const [minId, setMinId] = useState("");
+  const [current, setCurrent] = useState("");
+  // const [selected, setSelected] = useState<Set<string>>(new Set([]));
+  const [done, setDone] = useState<Set<string>>(new Set([]));
 
   useEffect(() => {
     return () => {
@@ -46,15 +56,22 @@ export default function SelectionSort({
 
   useEffect(() => {
     const start = async () => {
-      setLocalData(data);
-      dataRef.current = [...data];
+      const newData = data.map((number, i) => ({ id: randomId + i, number }));
+      setLocalData(newData);
+      dataRef.current = [...newData];
       let minIndex = 0;
       const currentData = dataRef.current;
       for (let i = 0; i < currentData.length; i++) {
         minIndex = i;
+        setMinId(currentData[minIndex].id);
+        await wait(delayRef.current / 2);
         for (let j = i + 1; j < currentData.length; j++) {
-          if (currentData[j] < currentData[minIndex]) {
+          setCurrent(currentData[j].id);
+          await wait(delayRef.current / 2);
+          if (currentData[j].number < currentData[minIndex].number) {
             minIndex = j;
+            setMinId(currentData[minIndex].id);
+            await wait(delayRef.current / 2);
           }
         }
         const swappedArray = swapElementsInArray(
@@ -67,10 +84,29 @@ export default function SelectionSort({
         await wait(delayRef.current);
         dataRef.current = swappedArray;
         setLocalData(swappedArray);
+        setDone((prev) => new Set([...prev, currentData[i].id]));
       }
     };
     start();
-  }, [data, delay]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
-  return <Chart algorithmName="Selection Sort" code={code} data={localData} />;
+  return (
+    <ChartLayout algorithmName="Selection Sort" code={code}>
+      <div className="chart-container">
+        {localData.map(({ number, id }) => (
+          <div
+            className={`chart ${current === id ? "selected" : ""} ${
+              minId === id ? "highlight" : ""
+            } ${done.has(id) ? "done" : ""} `}
+            key={id}
+            style={{
+              height: `${number * 2}px`,
+            }}
+            data-number={number}
+          ></div>
+        ))}
+      </div>
+    </ChartLayout>
+  );
 }

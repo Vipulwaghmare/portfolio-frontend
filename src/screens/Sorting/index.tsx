@@ -54,7 +54,7 @@ export default function Sorting() {
   const [error, setError] = useState("");
   const [current, setCurrent] = useState<AlgoNames | null>(null);
   const [array, setArray] = useState<number[]>([
-    100, 90, 80, 70, 60, 50, 40, 30, 20, 10,
+    50, 40, 30, 20, 10, 100, 90, 80, 70, 60,
   ]);
   const [delay] = useState(1000);
 
