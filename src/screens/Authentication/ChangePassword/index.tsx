@@ -44,7 +44,12 @@ const ChangePassword = () => {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" height="100%">
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      className="main-full"
+    >
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <h3>Change Password</h3>
         <Grid container gap={1} justifyContent="center" maxWidth={500}>

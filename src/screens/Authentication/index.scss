@@ -1,0 +1,15 @@
+.auth-header {
+  height: 54px;
+  background: rgb(30, 33, 39);
+  background: linear-gradient(
+    180deg,
+    rgba(30, 33, 39, 1) 0%,
+    rgba(39, 95, 173, 1) 100%
+  );
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.main-full {
+  min-height: calc(100vh - 54px);
+}

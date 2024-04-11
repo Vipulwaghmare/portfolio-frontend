@@ -49,7 +49,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" height="100%">
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      className="main-full"
+    >
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Grid container gap={1} justifyContent="center" maxWidth={500}>
           <CustomTextField
