@@ -10,5 +10,26 @@ pipeline {
         }
       }
     }
+    stage('Checkout Repositories') {
+        parallel {
+            stage('Checkout Primary Repo') {
+                // agent { docker { image 'your-docker-image:latest' } }
+                steps {
+                    checkout scm
+                }
+            }
+            stage('Checkout Secondary Repo') {
+                // // agent { docker { image 'your-docker-image:latest' } }
+                // steps {
+                //     withCredentials([usernamePassword(credentialsId: 'your-credentials-id', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                //         git url: 'https://github.com/your-username/secondary-repo.git', credentialsId: 'your-credentials-id'
+                //     }
+                // }
+                steps {
+                  git 'https://github.com/Vipulwaghmare/portfolio-backend.git'
+                }
+            }
+        }
+    }
   }
 }
