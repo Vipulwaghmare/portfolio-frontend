@@ -3,6 +3,7 @@ pipeline {
     docker {
       image 'node:20.16.0-alpine3.20'
     }
+  }
     stages {
       stage('Check Configuration') {
         steps {
@@ -31,5 +32,4 @@ pipeline {
             }
         }
     }
-  }
 }
