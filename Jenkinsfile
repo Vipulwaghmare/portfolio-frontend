@@ -20,7 +20,6 @@ pipeline {
                 }
             }
             stage('Checkout Secondary Repo') {
-                // // agent { docker { image 'your-docker-image:latest' } }
                 // steps {
                 //     withCredentials([usernamePassword(credentialsId: 'your-credentials-id', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 //         git url: 'https://github.com/your-username/secondary-repo.git', credentialsId: 'your-credentials-id'
